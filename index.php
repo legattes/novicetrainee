@@ -62,7 +62,6 @@
 				<p><strong>CONTATE-NOS</strong> via e-mail exemplo@exemplo.com.br ou através de nosso telefone <strong>(00)00000-000!</strong></p>
 
 		</section>
-	</center>
 		<footer>
 				<h6>Desenvolvido por: Grupo - Faculdade Olavo Bilac</h6>
 		</footer>
