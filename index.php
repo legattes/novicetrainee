@@ -18,11 +18,11 @@
 					
 					<ul>
 						<li><a href = "index.html">           Home    </a></li>
-						<li><a href = "html/cadastroAluno.php">   Aluno	  </a></li>
-						<li><a href = "html/cadastroEmpresa.php"> Empresa </a></li>
+						<li><a href = "pages/cadastroAluno.php">   Aluno	  </a></li>
+						<li><a href = "pages/cadastroEmpresa.php"> Empresa </a></li>
 						<li><a href = "#contato">             Contato </a></li>
 						<li><a href = "#sobre">		          Sobre   </a></li>
-						<li><a href = "html/login.html">			  Login   </a></li>
+						<li><a href = "pages/login.html">			  Login   </a></li>
 					</ul>
 
 				</nav>
