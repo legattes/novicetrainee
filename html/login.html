@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html language="pt-br">
+	<head>
+		<title>Novice Trainee</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width = device-width, initial-scale = 1">
+		<meta name="keywords" content="Estágio, emprego, currículo, currículum, sites">
+		<meta name="robots" content="index, follow">
+		<link rel="stylesheet" href="../css/style.css">
+		<link href='https://fonts.googleapis.com/css?family=Lato:400,300,700' rel='stylesheet' type='text/css'>
+	</head>
+	<body>
+		<header>
+				<nav>
+					
+					<ul>
+						<li><a href = "index.html">           Home    </a></li>
+						<li><a href = "cadastroAluno.php">   Aluno	  </a></li>
+						<li><a href = "cadastroEmpresa.php"> Empresa </a></li>
+						<li><a href = "index.html"#contato>  Contato </a></li>
+						<li><a href = "index.html"#sobre>	  Sobre   </a></li>
+						<li><a href = "login.html">			  Login   </a></li>
+					</ul>
+					
+				</nav>
+		</header>
+
+		<form id="loginE" method="POST" action="../php/logEmpresa.php">
+
+			<div id="loginEmpresa">
+
+				<h1>Login Empresa</h1>
+
+				<p>CNPJ:			<input type="text" name="cnpj">  </p>
+				<p>senha:			<input type="password" name="senhaEmpresa">  </p>
+
+				<div id="buttom">
+
+					<input type="submit" name="loginEmpresa" value="Login">
+				</div>
+
+			</div>
+
+		</form>
+
+		<form id="loginA" method="POST" action="../php/logEstudante.php">
+
+			<div id="loginAluno">
+				<h1>Login Aluno</h1>
+
+				<p>CPF:	  <input type="text" name="cpf"> </p>
+				<p>senha: <input type="password" name="senhaAluno">  </p>
+
+			</div>
+
+			<div id="buttom">
+
+				<input type="submit" name="loginAluno" value="Login">
+
+			</div>
+
+		</form>
+
+		<footer>
+				<h6>Desenvolvido por: Grupo - Faculdade Olavo Bilac</h6>
+		</footer>
+	</body>
+</html>

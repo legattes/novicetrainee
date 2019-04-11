@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Área do Aluno</title>
+		<link href="../css/bootstrap.min.css" rel="stylesheet">		
+	</head>
+	<body>
+		<div class="container theme-showcase" role="main">
+			<div class="container-fuid">
+				<div class="page-header">
+					<h1>Área do Estudante</h1> 				
+				</div>
+			<div>
+
+			  <!-- Nav tabs -->
+			  <ul class="nav nav-tabs" role="tablist">
+				<li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="pill">Home</a></li>
+				<li role="presentation"><a href="#atDados" aria-controls="atDados" role="tab" data-toggle="pill">Atualizar Dados</a></li>
+				<li role="presentation"><a href="#vagasDisp" aria-controls="vagasDisp" role="tab" data-toggle="pill">Vagas Disponíveis</a></li>
+				<li role="presentation"><a href="#curriculo" aria-controls="curriculo" role="tab" data-toggle="pill">Currículo</a></li>
+			  </ul>
+
+
+			  <!-- Home -->
+			  <div class="tab-content">
+				<div role="tabpanel" class="tab-pane active" id="home">
+					<center><p><h2><b>Bem Vindo a Área do Estudante!</b></h2></p></center>
+					</br></br>
+					</br></br>
+				
+				<center><img src="C:\xampp\htdocs\NoviceTrainee\img/logo.png" alt="Logo" width="350" height="150"></center>	
+					</br></br>
+					</br></br>
+					<center><table border="1" width="600">
+					<tr>
+					<td colspan="4"><center>Vagas Inscritas</center></td>
+					</tr>
+					<tr>
+					<td>TESTE</td>
+					</tr>
+					</table></center>
+				</div>
+				<div role="tabpanel" class="tab-pane" id="atDados">
+										
+					<form id="formulario" method="POST" action="../php/cadastroEstudante.php">
+						<table class="table">
+							<thead>
+								<tr>
+									<th>CPF</th>
+									<th></th>
+									<th>Editar</th>
+								</tr>
+							</thead>							
+							<tr>
+				<td colspan="3"><h2>Informações Gerais</h2></td>
+							</tr>							
+				<tr><td><p>Nome Completo:</td>		<td><input type="text" name="nome"> </p></td>	<td> <a href=
+																										class="btn btn-info">Edit</a></td></tr>
+				<tr><td><p>CPF:	</td>			   	<td><input type="text" name="cpf">  </p></td>	<td> <a href=
+																										class="btn btn-info">Edit</a></td></tr>
+				<tr><td><p>Senha de acesso:</td>    <td><input type="password" name="senha"></p></td>	<td> <a href=
+																										class="btn btn-info">Edit</a></td></tr>
+				<tr><td><p>Data de Nascimento:</td>	<td><input type="Date" name="data"> </p></td>	<td> <a href=
+																										class="btn btn-info">Edit</a></td></tr>							
+				<tr><td><p>Sexo:</td>
+					<td><select name="sexo">
+						<option value= "m">Masculino</option>
+						<option value= "f">Feminino</option>
+					</select>
+			    </p></td>																		<td> <a href=
+																										class="btn btn-info">Edit</a></td></tr>							
+				<tr><td><p>Estado Civil:</td>
+					<td><select name = "estadoCivil">
+						<option value= "Solteiro">Solteiro</option>
+						<option value= "Casado">Casado</option>
+						<option value= "Divorciado">Divorciado</option>
+						<option value= "Viuvo">Viuvo</option>
+					</select>
+			    </p></td>																		<td> <a href=
+																										class="btn btn-info">Edit</a></td></tr>
+							<tr>
+			 	<td colspan="3"><h2> Escolaridade</h2></td>
+							</tr>							
+			 	<tr><td><p>RA:</td> <td><input type="text" name="RA"></p></td>						<td> <a href=
+																										class="btn btn-info">Edit</a></td></tr>
+			 	<tr><td><p>Graduação:</td> <td><input type = "text" name = "graduacao"></p></td><td> <a href=
+																										class="btn btn-info">Edit</a></td></tr>			 
+			 	<tr><td><p>Instituicao</td>
+				<td><select name = "instituicao">
+					<?php 
+
+						$instituicao = "SELECT * FROM Instituicao";
+						$resultInstituicao = mysqli_query($con, $instituicao);
+
+						while($dadosInstituicao = mysqli_fetch_array($resultInstituicao))
+						{
+							$nomeInstituicao = $dadosInstituicao['nomeInstituicao'];
+							$idInstituicao   = $dadosInstituicao['idInstituicao'];
+							echo"<option value='$idInstituicao'>$nomeInstituicao</option>";
+						}	
+					?>
+				</select>
+				</p></td>																		<td> <a href=
+																										class="btn btn-info">Edit</a></td></tr>
+
+				<tr><td><p>Estado</td>
+				<td><select name = "estadoEsc">
+					<?php 
+						
+						$estadoEsc = "SELECT * FROM Estados";
+						$resultEstadoEsc = mysqli_query($con, $estadoEsc);
+
+						while($dadosEsc = mysqli_fetch_assoc($resultEstadoEsc))
+						{
+							$nomeEstadoEsc = $dadosEsc['nomeEstado'];
+							$idEstadoEsc = $dadosEsc['idEstado'];
+							echo"<option value='$idEstadoEsc'>$nomeEstadoEsc</option>";
+						}	
+					?>
+				</select>
+				</p></td>																		<td> <a href=
+																										class="btn btn-info">Edit</a></td></tr>
+
+				<tr><td><p>Cidade:</td> <td><input type="text" name="cidadeEsc"></p></td>		<td> <a href=
+																										class="btn btn-info">Edit</a></td></tr>
+
+				<tr><td><p>Curso:</td> 	<td><input type="text" name="curso"></p></td>			<td> <a href=
+																										class="btn btn-info">Edit</a></td></tr>
+
+				<tr><td><p>Semeste:</td><td><input type="text" name="semestre"></p></td>		<td> <a href=
+																										class="btn btn-info">Edit</a></td></tr>
+
+				<tr><td><p>Periodo:</td><td><input type="text" name="periodo"></p></td>			<td> <a href=
+																										class="btn btn-info">Edit</a></td></tr>	
+
+					<tr>
+				<td colspan="3"><h2>Endereço</h2></td>
+					</tr>					
+				<tr><td><p>Cidade:</td>		<td><input type="text" name="cidade"> </p></td>			<td> <a href=
+																										class="btn btn-info">Edit</a></td></tr>										
+				<tr><td><p>Estado</td>
+				<td><select name = "estado">
+					<?php 
+						
+						$estado = "SELECT * FROM Estados";
+						$resultEstado = mysqli_query($con, $estado);
+
+						while($dados = mysqli_fetch_assoc($resultEstado))
+						{
+							$nomeEstado = $dados['nomeEstado'];
+							$idEstado = $dados['idEstado'];
+							echo"<option value='$idEstado'>$nomeEstado</option>";
+						}	
+					?>
+				</select>
+				</p></td>																		<td> <a href=
+																										class="btn btn-info">Edit</a></td></tr>
+
+				<tr><td><p>Bairro:</td>		<td><input type="text" name="bairro"> </p></td>		<td> <a href=
+																										class="btn btn-info">Edit</a></td></tr>
+				<tr><td><p>CEP:	</td>	    <td><input type="text" name="cep"> </p></td>		<td> <a href=
+																										class="btn btn-info">Edit</a></td></tr>
+				<tr><td><p>Rua: </td>		<td><input type="text" name="rua"> </p></td>		<td> <a href=
+																										class="btn btn-info">Edit</a></td></tr>
+				<tr><td><p>Complemento:</td><td><input type="text" name="complemento"> </p></td><td> <a href=
+																										class="btn btn-info">Edit</a></td></tr>
+				<tr><td><p>Nº:</td> 		<td><input type="text" name="numero"> </p></td>		<td> <a href=
+																										class="btn btn-info">Edit</a></td></tr>			
+					<tr>
+				<td colspan="3"><h2>Contato</h2></td>
+					</tr>					
+				<tr><td><p>E-mail:</td>			<td><input type="E-mail" name="email"> </p></td>		<td> <a href=
+																										class="btn btn-info">Edit</a></td></tr>
+				<tr><td><p>Celular:</td>	<td><input type="text" name="celular"> </p></td>		<td> <a href=
+																										class="btn btn-info">Edit</a></td></tr>
+				<tr><td><p>Telefone:</td>	<td><input type="text" name="telefone">  </p></td>		<td> <a href=
+																										class="btn btn-info">Edit</a></td></tr>												
+						</table>
+				</form>
+												
+			<input class="btn btn-primary btn-lg" type="submit" value="Salvar" />
+				</div>
+				<div role="tabpanel" class="tab-pane" id="vagasDisp">
+					</br><center>
+							<table class="table" border="1">
+							<tr><td colspan="3">TESTE</td><td align="right"><input class="btn btn-info" type="submit" value="Participar" /></td>				
+							</table>
+					</center>
+				</div>
+				<div role="tabpanel" class="tab-pane" id="curriculo">						
+						</br><p>CPF:<input type = "text" name="cpf"></p>
+
+					
+						<input class="btn btn-info" type="submit" value="Gerar Currículo" />
+					
+				</div>
+			  </div>
+			  
+			</div>
+		</div>
+		
+		
+		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<!-- Include all compiled plugins (below), or include individual files as needed -->
+		<script src="../js/bootstrap.min.js"></script>
+	</body>
+</html>
