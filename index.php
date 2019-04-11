@@ -4,7 +4,7 @@
 		<title>Novice Trainee</title>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width = device-width, initial-scale = 1">
-		<meta name="description" content="Consultório de Estética Corporal e Facial.">
+		<meta name="description" content="Novice Trainee.">
 		<meta name="keywords" content="Estágio, emprego, currículo, currículum, sites">
 		<meta name="robots" content="index, follow">
 		<link rel="stylesheet" href="../css/style.css">
