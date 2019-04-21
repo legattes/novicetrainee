@@ -36,7 +36,7 @@ CREATE TABLE empresa(
 );
 
 --
-CREATE TABLE vagas (
+CREATE TABLE vaga (
   vaga_id BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   empresa_id BIGINT NOT NULL,
   curso VARCHAR(45) NOT NULL,
@@ -80,14 +80,14 @@ CREATE TABLE pergunta_resposta(
 );
 
 --
-CREATE TABLE vagas_requisitos(
+CREATE TABLE vaga_requisitos(
   vaga_id BIGINT NOT NULL,
   conhecimento_id BIGINT NOT NULL,
   proficiencia VARCHAR(20) NOT NULL
 );
 
 --
-CREATE TABLE vagas_beneficios(
+CREATE TABLE vaga_beneficios(
   vaga_id BIGINT NOT NULL,
   beneficio VARCHAR(250) NOT NULL
 );
@@ -115,17 +115,17 @@ ALTER TABLE estudante_conhecimento ADD CONSTRAINT fk_estudante_id_at_estudante_c
 ALTER TABLE estudante_conhecimento ADD CONSTRAINT fk_conheciment_id_at_estudante_conhecimento FOREIGN KEY (conhecimento_id) REFERENCES conhecimento(conhecimento_id);
 
 ALTER TABLE estudante_vaga ADD CONSTRAINT fk_estudante_id_at_estudante_vaga FOREIGN KEY (estudante_id) REFERENCES estudante(estudante_id);
-ALTER TABLE estudante_vaga ADD CONSTRAINT fk_vaga_id_at_estudante_vaga FOREIGN KEY (vaga_id) REFERENCES vagas(vaga_id);
+ALTER TABLE estudante_vaga ADD CONSTRAINT fk_vaga_id_at_estudante_vaga FOREIGN KEY (vaga_id) REFERENCES vaga(vaga_id);
 
 ALTER TABLE estudante_instituicao ADD CONSTRAINT fk_estudante_id_at_estudante_instituicao FOREIGN KEY (estudante_id) REFERENCES estudante(estudante_id);
 ALTER TABLE estudante_instituicao ADD CONSTRAINT fk_instituicao_id_at_estudante_instituicao FOREIGN KEY (instituicao_id) REFERENCES instituicao(instituicao_id);
 
-ALTER TABLE vagas ADD CONSTRAINT fk_empresa_id_at_vagas FOREIGN KEY (empresa_id) REFERENCES empresa(empresa_id);
+ALTER TABLE vaga ADD CONSTRAINT fk_empresa_id_at_vaga FOREIGN KEY (empresa_id) REFERENCES empresa(empresa_id);
 
-ALTER TABLE vagas_requisitos ADD CONSTRAINT fk_vaga_id_at_vagas_requisitos FOREIGN KEY (vaga_id) REFERENCES vagas(vaga_id);
-ALTER TABLE vagas_requisitos ADD CONSTRAINT fk_conhecimento_id_at_vagas_requisitos FOREIGN KEY (conhecimento_id) REFERENCES conhecimento(conhecimento_id);
+ALTER TABLE vaga_requisitos ADD CONSTRAINT fk_vaga_id_at_vaga_requisitos FOREIGN KEY (vaga_id) REFERENCES vaga(vaga_id);
+ALTER TABLE vaga_requisitos ADD CONSTRAINT fk_conhecimento_id_at_vaga_requisitos FOREIGN KEY (conhecimento_id) REFERENCES conhecimento(conhecimento_id);
 
-ALTER TABLE vagas_beneficios ADD CONSTRAINT fk_vaga_id_at_vagas_beneficios FOREIGN KEY (vaga_id) REFERENCES vagas(vaga_id);
+ALTER TABLE vaga_beneficios ADD CONSTRAINT fk_vaga_id_at_vaga_beneficios FOREIGN KEY (vaga_id) REFERENCES vaga(vaga_id);
 
 ALTER TABLE pergunta_resposta ADD CONSTRAINT fk_pergunta_id_at_pergunta_resposta FOREIGN KEY (pergunta_id) REFERENCES pergunta(pergunta_id);
 ALTER TABLE pergunta_resposta ADD CONSTRAINT fk_resposta_id_at_pergunta_resposta FOREIGN KEY (resposta_id) REFERENCES resposta(resposta_id);
@@ -133,4 +133,4 @@ ALTER TABLE pergunta_resposta ADD CONSTRAINT fk_resposta_id_at_pergunta_resposta
 ALTER TABLE prova_pergunta ADD CONSTRAINT fk_pergunta_id_at_prova_pergunta FOREIGN KEY (pergunta_id) REFERENCES pergunta(pergunta_id);
 ALTER TABLE prova_pergunta ADD CONSTRAINT fk_prova_id_at_prova_pergunta FOREIGN KEY (prova_id) REFERENCES prova(prova_id);
 
-ALTER TABLE prova ADD CONSTRAINT fk_vaga_id_at_prova FOREIGN KEY (prova_id) REFERENCES vagas(vaga_id);
+ALTER TABLE prova ADD CONSTRAINT fk_vaga_id_at_prova FOREIGN KEY (prova_id) REFERENCES vaga(vaga_id);

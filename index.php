@@ -1,3 +1,8 @@
+<?php
+
+require_once "php\dao\Estudante.php";
+?>
+
 <!DOCTYPE html>
 <html language="pt-br">
 	<head>
@@ -7,7 +12,7 @@
 		<meta name="description" content="Novice Trainee.">
 		<meta name="keywords" content="Estágio, emprego, currículo, currículum, sites">
 		<meta name="robots" content="index, follow">
-		<link rel="stylesheet" href="../css/style.css">
+		<link rel="stylesheet" href="css/style.css">
 		<link href='https://fonts.googleapis.com/css?family=Lato:400,300,700' rel='stylesheet' type='text/css'>
 	</head>
 	<body>
@@ -16,14 +21,14 @@
 		<header>
 				<nav>
 					
-					<ul>
-						<li><a href = "index.html">           Home    </a></li>
-						<li><a href = "pages/cadastroAluno.php">   Aluno	  </a></li>
-						<li><a href = "pages/cadastroEmpresa.php"> Empresa </a></li>
-						<li><a href = "#contato">             Contato </a></li>
-						<li><a href = "#sobre">		          Sobre   </a></li>
-						<li><a href = "pages/login.html">			  Login   </a></li>
-					</ul>
+				<ul>
+				<li><a href="index.php"> Home </a></li>
+				<li><a href="pages/estudante/add.php"> Aluno </a></li>
+				<li><a href="pages/empresa/add.php"> Empresa </a></li>
+				<li><a href="#contato"> Contato </a></li>
+				<li><a href="#sobre"> Sobre </a></li>
+				<li><a href="pages/login.php"> Login </a></li>
+			</ul>
 
 				</nav>
 		</header>

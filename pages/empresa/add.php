@@ -1,22 +1,6 @@
 <?php
 
-/*  Abrindo conexão com o Banco de Dados*/
-	$host = "localhost";
-	$usuario = "root";
-	$senha = "";
-	$banco = "novicetrainee";
-	
-    //O tipo de caracteres a ser usado
-    header('Content-Type: text/html; charset=utf-8');
 
-		$con = mysqli_connect($host, $usuario, $senha, $banco);
-
-		if (!$con) {
-	   		echo "Error: Falha ao conectar-se com o banco de dados MySQL." . PHP_EOL;
-	   	 	echo "Debugging errno: " . mysqli_connect_errno() . PHP_EOL;
-	   	 	echo "Debugging error: " . mysqli_connect_error() . PHP_EOL;
-	    	exit;
-		}
 ?>
 <!DOCTYPE html>
 <html language="pt-br">
@@ -26,7 +10,7 @@
 		<meta name="viewport" content="width = device-width, initial-scale = 1">
 		<meta name="keywords" content="Estágio, emprego, currículo, currículum, sites">
 		<meta name="robots" content="index, follow">
-		<link rel="stylesheet" href="../css/style.css">
+		<link rel="stylesheet" href="../../css/style.css">
 		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 		<link href='https://fonts.googleapis.com/css?family=Lato:400,300,700' rel='stylesheet' type='text/css'>
 	</head>
@@ -34,14 +18,14 @@
 		<header>
 				<nav>
 					
-					<ul>
-						<li><a href = "index.html">           Home    </a></li>
-						<li><a href = "cadastroAluno.php">   Aluno	  </a></li>
-						<li><a href = "cadastroEmpresa.php"> Empresa </a></li>
-						<li><a href = "index.html"#contato>  Contato </a></li>
-						<li><a href = "index.html"#sobre>	  Sobre   </a></li>
-						<li><a href = "login.html">			  Login   </a></li>
-					</ul>
+				<ul>
+				<li><a href="../../index.php"> Home </a></li>
+				<li><a href="../estudante/add.php"> Aluno </a></li>
+				<li><a href="add.php"> Empresa </a></li>
+				<li><a href="../../index.php" #contato> Contato </a></li>
+				<li><a href="../../index.php" #sobre> Sobre </a></li>
+				<li><a href="../login.php"> Login </a></li>
+			</ul>
 					
 				</nav>
 		</header>
