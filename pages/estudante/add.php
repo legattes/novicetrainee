@@ -1,5 +1,5 @@
 <?php
-require_once "../../php/dao/Instituicao.php";
+require_once "../../php/dao/Dao.php";
 ?>
 <!DOCTYPE html>
 <html language="pt-br">
@@ -25,102 +25,59 @@ require_once "../../php/dao/Instituicao.php";
 				<li><a href="../../index.php" #sobre> Sobre </a></li>
 				<li><a href="../login.php"> Login </a></li>
 			</ul>
-
 		</nav>
 	</header>
 
 	<h1>Cadastro do Estudante</h1>
 
-	<form id="formulario" method="POST" action="../php/cadEstudante.php">
-
+	<form id="formulario" method="POST" action="../../php/estudante/add.php">
 		<div id="informacoesGerais">
-
 			<h2>Informações Gerais</h2>
-			<p>Nome Completo: <input type="text" name="nome"> </p>
-			<p>CPF: <input type="text" name="cpf"> </p>
-			<p>Senha de acesso: <input type="password" name="senha"></p>
-			<p>Data de Nascimento: <input type="Date" name="data"> </p>
-
-			<p>Sexo:
-				<select name="sexo">
-					<option value="m">Masculino</option>
-					<option value="f">Feminino</option>
+			<p>Nome Completo<input type="text" name="estudante[nome]"></p>
+			<p>CPF<input type="text" name="estudante[cpf]"></p>
+			<p>Senha de acesso<input type="password" name="estudante[senha]"></p>
+			<p>Data de Nascimento<input type="Date" name="estudante[data_nasc]"></p>
+			<p>Sexo<select name="estudante[sexo]">
+					<option value="M">Masculino</option>
+					<option value="F">Feminino</option>
 				</select>
 			</p>
-
-			<p>Estado Civil:
-				<select name="estadoCivil">
+			<p>Estado Civil<select name="estudante[estado_civil]">
 					<option value="Solteiro">Solteiro</option>
 					<option value="Casado">Casado</option>
 					<option value="Divorciado">Divorciado</option>
 					<option value="Viuvo">Viuvo</option>
 				</select>
 			</p>
-
 		</div>
 
 		<div id="Escolaridade">
-
 			<h2> Escolaridade</h2>
-			<p>RA: <input type="text" name="RA"></p>
-			<p>Graduação: <input type="text" name="graduacao"> </p>
-
-			<p>Instituicao
-				<select name="instituicao">
+			<p>Institução<select name="instituicao">
 					<?php
-					$instituicoes = (new Instituicao())->all();
+					$instituicoes = (new Dao())->get('instituicao');
 					foreach ($instituicoes as $instituicao) {
 						echo "<option value='{$instituicao->instituicao_id}'>{$instituicao->nome}</option>";
 					}
 					?>
 				</select>
 			</p>
-
-			<p>Estado: <select name="estado" size=1>
-					<option value='AC'>AC</option>
-					<option value='AL'> AL</option>
-					<option value='AP'> AP</option>
-					<option value='AM'> AM</option>
-					<option value='BA'> BA</option>
-					<option value='CE'> CE</option>
-					<option value='DF'> DF</option>
-					<option value='ES'> ES</option>
-					<option value='GO'> GO</option>
-					<option value='MA'> MA</option>
-					<option value='MT'> MT</option>
-					<option value='MS'> MS</option>
-					<option value='MG'> MG</option>
-					<option value='PA'> PA</option>
-					<option value='PB'> PB</option>
-					<option value='PE'> PE</option>
-					<option value='PI'> PI</option>
-					<option value='PR'> PR</option>
-					<option value='RJ'> RJ</option>
-					<option value='RN'> RN</option>
-					<option value='RS'> RS</option>
-					<option value='RO'> RO</option>
-					<option value='RR'> RR</option>
-					<option value='SC'> SC</option>
-					<option value='SP'> SP</option>
-					<option value='SE'> SE</option>
-					<option value='TO'> TO</option>
-				</select>
-			</p>
-
-			<p>Cidade: <input type="text" name="cidadeEsc"></p>
-
-			<p>Curso: <input type="text" name="curso"></p>
-
-			<p>Semeste: <input type="text" name="semestre"></p>
-
-			<p>Periodo: <input type="text" name="periodo"></p>
+			<p>Curso<select name="curso">
+				<option value='Ciência da Computação'>Ciência da Computação</option>
+			</select></p>
+			<p>RA<input type="text" name="RA"></p>
+			<p>Semestre<input type="text" name="semestre"></p>
+			<p>Periodo<select name="periodo">
+					<option value='Diurno'>Diurno</option>
+					<option value='Noturno'>Noturno</option>
+				</select></p>
 		</div>
-		<div id="endereco">
 
+		<div id="endereco">
 			<h2>Endereço</h2>
-			<p>Cidade: <input type="text" name="cidade"> </p>
+			<p>Cidade<input type="text" name="endereco[cidade]"></p>
 			<p>Estado
-				<select name="estado">
+				<select name="endereco[estado]">
 					<option value='AC'>AC</option>
 					<option value='AL'> AL</option>
 					<option value='AP'> AP</option>
@@ -150,32 +107,22 @@ require_once "../../php/dao/Instituicao.php";
 					<option value='TO'> TO</option>
 				</select>
 			</p>
-
-			<p>Bairro: <input type="text" name="bairro"> </p>
-			<p>CEP: <input type="text" name="cep"> </p>
-			<p>Rua: <input type="text" name="rua"> </p>
-			<p>Complemento: <input type="text" name="complemento"> </p>
-			<p>numero: <input type="text" name="numero"> </p>
-
+			<p>CEP<input type="text" name="endereco[cep]"></p>
+			<p>Bairro<input type="text" name="endereco[bairro]"></p>
+			<p>Rua<input type="text" name="endereco[rua]"></p>
+			<p>Número<input type="text" name="endereco[numero]"></p>
+			<p>Complemento<input type="text" name="endereco[complemento]"></p>
 		</div>
 
 		<div id="contato">
-
 			<h2>Contato</h2>
-			<p>E-mail: <input type="E-mail" name="email"> </p>
-			<p>celular: <input type="text" name="celular"> </p>
-			<p>telefone: <input type="text" name="telefone"> </p>
-			<p>telefone para recado:<input type="text" name="recado"> </p>
-
+			<p>E-mail<input type="E-mail" name="contato[email]"></p>
+			<p>Celular<input type="text" name="contato[celular]"></p>
+			<p>Telefone<input type="text" name="contato[telefone]"></p>
 		</div>
 
 		<input type="submit" name="cadastrar" value="Cadastrar">
-		<input type="reset" name="Apagar campos" value="Redefinir">
-
 		</div>
-
-
-
 	</form>
 	<footer>
 		<h6>Desenvolvido por: Grupo - Faculdade Olavo Bilac</h6>

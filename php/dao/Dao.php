@@ -10,12 +10,12 @@ class DAO
         $this->connection = (new Connection())->connect();
     }
 
-    public function save($table, $id = null)
+    public function save($table, $post, $select = null, $id = null)
     {
         if ($id == null) {
-            return $this->_insert($table, $_POST);
+            return $this->_insert($table, $post, $select);
         } else {
-            return $this->_update($table, $_POST, $id);
+            return $this->_update($table, $post, $id);
         }
     }
 
@@ -38,7 +38,7 @@ class DAO
                 $item[$key] = $column;
             }
 
-            array_push($result, $item);
+            array_push($result, (object) $item);
         }
 
         header('HTTP/1.1 200 OK');

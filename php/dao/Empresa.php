@@ -1,26 +1,8 @@
 <?php
-require_once "Model.php";
+require_once "Dao.php";
 
-class Empresa extends Model
+class Empresa extends Dao
 {
-    public function save($id = null)
-    {
-        if ($id == null) {
-            return parent::_insert('estudante', $_POST);
-        } else {
-            return parent::_update('estudante', $_POST, $id);
-        }
-    }
-
-    public function get($id)
-    {
-        return parent::_select('estudante', $id);
-    }
-
-    public function all()
-    {
-        return parent::_select('estudante');
-    }
 
     public function getVagas($id)
     {

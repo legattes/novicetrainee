@@ -1,5 +1,5 @@
 <?php
-require_once("domPdf/autoload.inc.php");
+require_once("vendor/domPdf/autoload.inc.php");
 require_once("dao/Estudante.php");
 require_once("Session.php");
 
