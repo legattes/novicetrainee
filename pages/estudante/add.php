@@ -63,13 +63,14 @@ require_once "../../php/dao/Dao.php";
 				</select>
 			</p>
 			<p>Curso<select name="curso">
-				<option value='Ciência da Computação'>Ciência da Computação</option>
-			</select></p>
+					<option value='Ciência da Computação'>Ciência da Computação</option>
+				</select></p>
 			<p>RA<input type="text" name="RA"></p>
 			<p>Semestre<input type="text" name="semestre"></p>
 			<p>Periodo<select name="periodo">
-					<option value='Diurno'>Diurno</option>
-					<option value='Noturno'>Noturno</option>
+					<option value='Manha'>Manhã</option>
+					<option value='Tarde'>Tarde</option>
+					<option value='Noite'>Noite</option>
 				</select></p>
 		</div>
 

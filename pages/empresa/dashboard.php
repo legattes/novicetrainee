@@ -5,6 +5,10 @@ require_once "../../php/Session.php";
 Session::handle('empresa');
 
 $model = Session::get('model');
+
+$empresa =
+
+$info = (new Empresa())->info($model->empresa_id)[0];
 ?>
 
 <!DOCTYPE html>
@@ -25,6 +29,9 @@ $model = Session::get('model');
 		<div class="container-fuid">
 			<div class="page-header">
 				<h1>Área da Empresa</h1>
+				<a href='../../php/login.php'>
+					<div class='btn btn-primary'><span>Sair</span></div>
+				</a>
 			</div>
 			<div>
 
@@ -41,7 +48,7 @@ $model = Session::get('model');
 					<div role="tabpanel" class="tab-pane active" id="home">
 						<center>
 							<p>
-								<h2><b>Nome Empresa</b></h2>
+								<h2><?php echo $model->nome_fantasia; ?></h2>
 							</p>
 						</center>
 						</br></br>
@@ -56,152 +63,77 @@ $model = Session::get('model');
 									<td>Periodo</td>
 									<td>Remuneração</td>
 								</tr>
-								
-								<?php								
-								$vagas = (new Empresa())->getVagas(Session::get('empresa_id'));
 
-								foreach($vagas as $vaga){
+								<?php
+								$vagas = (new Empresa())->getVagas($model->empresa_id);
+
+								foreach ($vagas as $vaga) {
 									echo '<tr>';
-									echo '<td>' . $vaga->vaga_id . '</td>';									
-									echo '<td>' . $vaga->curso . '</td>';									
-									echo '<td>' . $vaga->semestre . '</td>';									
-									echo '<td>' . $vaga->area_atuacao . '</td>';									
-									echo '<td>' . $vaga->periodo . '</td>';									
-									echo '<td>' . $vaga->remuneracao . '</td>';			
-									echo '</tr>';								
+									echo '<td>' . $vaga->vaga_id . '</td>';
+									echo '<td>' . $vaga->curso . '</td>';
+									echo '<td>' . $vaga->semestre . '</td>';
+									echo '<td>' . $vaga->area_atuacao . '</td>';
+									echo '<td>' . $vaga->periodo . '</td>';
+									echo '<td>' . $vaga->remuneracao . '</td>';
+									echo '</tr>';
 								}
 								?>
 
-								
+
 							</table>
 						</center>
 					</div>
 
 					<!-- ATUALIZAR DADOS -->
 					<div role="tabpanel" class="tab-pane" id="atDados">
+						<form id="formulario" method="POST" action="../../php/empresa/update.php">
+							<div id="endereco">
+								<h2>Endereço</h2>
+								<p>Cidade<input type="text" name="endereco[cidade]" value="<?php echo $info->cidade;?>"></p>
+								<p>Estado
+									<select name="endereco[estado]">
+										<option value='AC'>AC</option>
+										<option value='AL'> AL</option>
+										<option value='AP'> AP</option>
+										<option value='AM'> AM</option>
+										<option value='BA'> BA</option>
+										<option value='CE'> CE</option>
+										<option value='DF'> DF</option>
+										<option value='ES'> ES</option>
+										<option value='GO'> GO</option>
+										<option value='MA'> MA</option>
+										<option value='MT'> MT</option>
+										<option value='MS'> MS</option>
+										<option value='MG'> MG</option>
+										<option value='PA'> PA</option>
+										<option value='PB'> PB</option>
+										<option value='PE'> PE</option>
+										<option value='PI'> PI</option>
+										<option value='PR'> PR</option>
+										<option value='RJ'> RJ</option>
+										<option value='RN'> RN</option>
+										<option value='RS'> RS</option>
+										<option value='RO'> RO</option>
+										<option value='RR'> RR</option>
+										<option value='SC'> SC</option>
+										<option value='SP'> SP</option>
+										<option value='SE'> SE</option>
+										<option value='TO'> TO</option>
+									</select>
+								</p>
+								<p>CEP<input type="text" name="endereco[cep]" value="<?php echo $info->cep;?>"></p>
+								<p>Bairro<input type="text" name="endereco[bairro]" value="<?php echo $info->bairro;?>"></p>
+								<p>Rua<input type="text" name="endereco[rua]" value="<?php echo $info->rua;?>"></p>
+								<p>Número<input type="text" name="endereco[numero]" value="<?php echo $info->numero;?>"></p>
+								<p>Complemento<input type="text" name="endereco[complemento]" value="<?php echo $info->complemento;?>"></p>
+							</div>
 
-						<form id="formulario" method="POST" action="">
-							<table class="table">
-								<tr>
-									<td colspan="3">
-										<h2>Endereço</h2>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										<p>Cidade:
-									</td>
-									<td><input type="text" name="cidade"> </p>
-									</td>
-
-								</tr>
-								<tr>
-									<td>
-										<p>Estado
-									</td>
-									<td><select name="estado" size=1>
-											<option value='AC'>AC</option>
-											<option value='AL'> AL</option>
-											<option value='AP'> AP</option>
-											<option value='AM'> AM</option>
-											<option value='BA'> BA</option>
-											<option value='CE'> CE</option>
-											<option value='DF'> DF</option>
-											<option value='ES'> ES</option>
-											<option value='GO'> GO</option>
-											<option value='MA'> MA</option>
-											<option value='MT'> MT</option>
-											<option value='MS'> MS</option>
-											<option value='MG'> MG</option>
-											<option value='PA'> PA</option>
-											<option value='PB'> PB</option>
-											<option value='PE'> PE</option>
-											<option value='PI'> PI</option>
-											<option value='PR'> PR</option>
-											<option value='RJ'> RJ</option>
-											<option value='RN'> RN</option>
-											<option value='RS'> RS</option>
-											<option value='RO'> RO</option>
-											<option value='RR'> RR</option>
-											<option value='SC'> SC</option>
-											<option value='SP'> SP</option>
-											<option value='SE'> SE</option>
-											<option value='TO'> TO</option>
-										</select>
-										</p>
-									</td>
-								</tr>
-
-								<tr>
-									<td>
-										<p>Bairro:
-									</td>
-									<td><input type="text" name="bairro"> </p>
-									</td>
-
-								</tr>
-								<tr>
-									<td>
-										<p>CEP:
-									</td>
-									<td><input type="text" name="cep"> </p>
-									</td>
-
-								</tr>
-								<tr>
-									<td>
-										<p>Rua:
-									</td>
-									<td><input type="text" name="rua"> </p>
-									</td>
-
-								</tr>
-								<tr>
-									<td>
-										<p>Complemento:
-									</td>
-									<td><input type="text" name="complemento"> </p>
-									</td>
-
-								</tr>
-								<tr>
-									<td>
-										<p>Nº:
-									</td>
-									<td><input type="text" name="numero"> </p>
-									</td>
-
-								</tr>
-								<tr>
-									<td colspan="3">
-										<h2>Contato</h2>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										<p>E-mail:
-									</td>
-									<td><input type="E-mail" name="email"> </p>
-									</td>
-
-								</tr>
-								<tr>
-									<td>
-										<p>Celular:
-									</td>
-									<td><input type="text" name="celular"> </p>
-									</td>
-
-								</tr>
-								<tr>
-									<td>
-										<p>Telefone:
-									</td>
-									<td><input type="text" name="telefone"> </p>
-									</td>
-
-								</tr>
-							</table>
+							<div id="contato">
+								<h2>Contato</h2>
+								<p>E-mail<input type="E-mail" name="contato[email]" value="<?php echo $info->email;?>"></p>
+								<p>Celular<input type="text" name="contato[celular]" value="<?php echo $info->celular;?>"></p>
+								<p>Telefone<input type="text" name="contato[telefone]" value="<?php echo $info->telefone;?>"></p>
+							</div>
 							<input class="btn btn-primary btn-lg" type="submit" value="Salvar" />
 						</form>
 					</div>
@@ -210,64 +142,47 @@ $model = Session::get('model');
 					<!-- CADASTRAR VAGAS -->
 
 					<div role="tabpanel" class="tab-pane" id="CadastrarVag">
-						<form id="formulario" method="POST" action="../php/cadastroEstudante.php">
+						<form id="formulario" method="POST" action="../../php/vaga/add.php">
 							<table class="table">
-								<thead>
-									<tr>
-										<th></th>
-										<th></th>
-										<th></th>
-									</tr>
-								</thead>
 								<tr>
 									<td colspan="3">
 										<h2>Informações Gerais</h2>
 									</td>
-								</tr>
+								</tr>						
+
 								<tr>
 									<td>
-										<p>Área de Atuação:
+										<p>Nome
 									</td>
-									<td><input type="text" name="AreaAtuacao"> </p>
+									<td><input type="text" name="vaga[nome]"></p>
 									</td>
 
 								</tr>
 								<tr>
 									<td>
-										<p>Remuneração:
+										<p>Periodo
 									</td>
-									<td><input type="text" name="Remuneração"> </p>
-									</td>
-
-								</tr>
-								<tr>
-									<td>
-										<p>Atividades Desenvolvidas:
-									</td>
-									<td><input type="text" name="atividades"></p>
-									</td>
-
-								</tr>
-								<tr>
-									<td>
-										<p>Benefícios
-									</td>
-									<td><input type="text" name="beneficios"> </p>
-									</td>
-
-								</tr>
-								<tr>
-									<td>
-										<p>Periodo::
-									</td>
-									<td><select name="Periodo">
-											<option value="manha">Manhã</option>
-											<option value="tarde">Tarde</option>
-											<option value="noite">Noite</option>
+									<td><select name="vaga[periodo]">
+											<option value='Manha'>Manhã</option>
+											<option value='Tarde'>Tarde</option>
+											<option value='Noite'>Noite</option>
 										</select>
 										</p>
 									</td>
-
+								</tr>
+								<tr>
+									<td>
+										<p>Área de atuação
+									</td>
+									<td><input type="text" name="vaga[area_atuacao]"></p>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p>Remuneração
+									</td>
+									<td><input type="text" name="vaga[remuneracao]"></p>
+									</td>
 								</tr>
 								<tr>
 									<td colspan="3">
@@ -277,7 +192,7 @@ $model = Session::get('model');
 
 								<tr>
 									<td>
-										<p>Requisitos:
+										<p>Requisitos
 									</td>
 									<td><input type="text" name="requisitos"></p>
 									</td>
@@ -285,48 +200,25 @@ $model = Session::get('model');
 								</tr>
 								<tr>
 									<td>
-										<p>Informaçoes adicionais:
+										<p>Curso
 									</td>
-									<td><input type="text" name="AdicionalInfo"></p>
-									</td>
-
-								</tr>
-
-								<tr>
-									<td>
-										<p>Curso:
-									</td>
-									<td><input type="text" name="curso"></p>
+									<td><input type="text" name="vaga[curso]"></p>
 									</td>
 
 								</tr>
 
 								<tr>
 									<td>
-										<p>Semeste:
+										<p>Semestre
 									</td>
-									<td><input type="text" name="semestre"></p>
-									</td>
-
-								</tr>
-								<tr>
-									<td>
-										<p>Periodo:
-									</td>
-									<td><input type="text" name="periodo"></p>
+									<td><input type="text" name="vaga[semestre]"></p>
 									</td>
 
 								</tr>
-								<tr>
-									<td colspan="3">
-										<h2> Enviar Teste </h2>
-									</td>
-								</tr>
-								<tr>
-									<td><input type="file" name="Teste"></td>
-								</tr>
+								
 								<tr>
 									<td><input class="btn btn-primary " type="submit" value="Salvar" /></td>
+								</tr>
 						</form>
 					</div>
 				</div>

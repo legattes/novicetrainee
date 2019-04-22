@@ -27,7 +27,6 @@ CREATE TABLE vaga(
   empresa_id BIGINT NOT NULL,
   curso VARCHAR(45) NOT NULL,
   semestre INT(2) NOT NULL,
-  escolaridade VARCHAR(30) NOT NULL,
   area_atuacao VARCHAR(50) NOT NULL,
   remuneracao INT(10) NOT NULL,
   periodo VARCHAR(20) NOT NULL,
@@ -77,6 +76,13 @@ CREATE TABLE endereco(
   complemento VARCHAR(250)
 );
 
+
+
+
+
+
+
+
 --
 CREATE TABLE estudante_instituicao (
   estudante_id BIGINT NOT NULL,
@@ -117,14 +123,6 @@ CREATE TABLE vaga_requisitos(
 
   CONSTRAINT fk_vaga_id_at_vaga_requisitos FOREIGN KEY (vaga_id) REFERENCES vaga(vaga_id),
   CONSTRAINT fk_conhecimento_id_at_vaga_requisitos FOREIGN KEY (conhecimento_id) REFERENCES conhecimento(conhecimento_id)
-);
-
---
-CREATE TABLE vaga_beneficios(
-  vaga_id BIGINT NOT NULL,
-  beneficio VARCHAR(250) NOT NULL,
-
-  CONSTRAINT fk_vaga_id_at_vaga_beneficios FOREIGN KEY (vaga_id) REFERENCES vaga(vaga_id)
 );
 
 --

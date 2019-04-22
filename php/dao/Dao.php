@@ -10,12 +10,12 @@ class DAO
         $this->connection = (new Connection())->connect();
     }
 
-    public function save($table, $post, $select = null, $id = null)
+    public function save($table, $post, $select = null, $where = null)
     {
-        if ($id == null) {
+        if ($where == null) {
             return $this->_insert($table, $post, $select);
         } else {
-            return $this->_update($table, $post, $id);
+            return $this->_update($table, $post, $where);
         }
     }
 

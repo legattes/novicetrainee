@@ -5,6 +5,8 @@ require_once "../../php/Session.php";
 Session::handle('estudante');
 
 $model = Session::get('model');
+
+$info = (new Estudante())->info($model->estudante_id)[0];
 ?>
 
 <!DOCTYPE html>
@@ -25,7 +27,9 @@ $model = Session::get('model');
 		<div class="container-fuid">
 			<div class="page-header">
 				<h1>Área do Estudante</h1>
-				<a href='../../php/login.php'><div class='btn btn-primary'><span>Sair</span></div></a>
+				<a href='../../php/login.php'>
+					<div class='btn btn-primary'><span>Sair</span></div>
+				</a>
 			</div>
 			<div>
 
@@ -45,7 +49,7 @@ $model = Session::get('model');
 						<center>
 							<h2>
 								<?php
-									echo 'Olá, ' . $model->nome;
+								echo 'Olá, ' . $model->nome;
 								?>
 
 							</h2>
@@ -67,254 +71,81 @@ $model = Session::get('model');
 					<!-- ATUALiZAR DADOS -->
 
 					<div role="tabpanel" class="tab-pane" id="atDados">
+						<form id="formulario" method="POST" action="../../php/estudante/update.php">
+							<div id="Escolaridade">
+								<h2> Escolaridade</h2>
+								<p>Instituição<select name="instituicao">
+										<?php
+										$instituicoes = (new Dao())->get('instituicao');
+										foreach ($instituicoes as $instituicao) {
+											echo "<option value='{$instituicao->instituicao_id}'>{$instituicao->nome}</option>";
+										}
+										?>
+									</select>
+								</p>
+								<p>Curso<select name="instituicao[curso]">
+										<option value='Ciência da Computação'>Ciência da Computação</option>
+									</select></p>
+								<p>RA<input type="text" name="instituicao[RA]" value="<?php echo $info->RA;?>"></p>
+								<p>Semestre<input type="text" name="instituicao[semestre]" value="<?php echo $info->semestre;?>"></p>
+								<p>Periodo<select name="instituicao[periodo]">
+										<option value='Manha'>Manhã</option>
+										<option value='Tarde'>Tarde</option>
+										<option value='Noite'>Noite</option>
+									</select></p>
+							</div>
 
-						<form id="formulario" method="POST" action="../php/cadastroEstudante.php">
-							<table class="table">
-								<tr>
-									<td colspan="3">
-										<h2>Informações Gerais</h2>
-									</td>
-								</tr>
+							<div id="endereco">
+								<h2>Endereço</h2>
+								<p>Cidade<input type="text" name="endereco[cidade]" value="<?php echo $info->cidade;?>"></p>
+								<p>Estado
+									<select name="endereco[estado]">
+										<option value='AC'>AC</option>
+										<option value='AL'> AL</option>
+										<option value='AP'> AP</option>
+										<option value='AM'> AM</option>
+										<option value='BA'> BA</option>
+										<option value='CE'> CE</option>
+										<option value='DF'> DF</option>
+										<option value='ES'> ES</option>
+										<option value='GO'> GO</option>
+										<option value='MA'> MA</option>
+										<option value='MT'> MT</option>
+										<option value='MS'> MS</option>
+										<option value='MG'> MG</option>
+										<option value='PA'> PA</option>
+										<option value='PB'> PB</option>
+										<option value='PE'> PE</option>
+										<option value='PI'> PI</option>
+										<option value='PR'> PR</option>
+										<option value='RJ'> RJ</option>
+										<option value='RN'> RN</option>
+										<option value='RS'> RS</option>
+										<option value='RO'> RO</option>
+										<option value='RR'> RR</option>
+										<option value='SC'> SC</option>
+										<option value='SP'> SP</option>
+										<option value='SE'> SE</option>
+										<option value='TO'> TO</option>
+									</select>
+								</p>
+								<p>CEP<input type="text" name="endereco[cep]" value="<?php echo $info->cep;?>"></p>
+								<p>Bairro<input type="text" name="endereco[bairro]" value="<?php echo $info->bairro;?>"></p>
+								<p>Rua<input type="text" name="endereco[rua]" value="<?php echo $info->rua;?>"></p>
+								<p>Número<input type="text" name="endereco[numero]" value="<?php echo $info->numero;?>"></p>
+								<p>Complemento<input type="text" name="endereco[complemento]" value="<?php echo $info->complemento ?? '';?>"></p>
+							</div>
 
-								<tr>
-									<td>
-										<p>Senha de acesso:
-									</td>
-									<td><input type="password" name="senha"></p>
-									</td>
-
-								</tr>
-								<tr>
-									<td>
-										<p>Estado Civil:
-									</td>
-									<td><select name="estadoCivil">
-											<option value="Solteiro">Solteiro</option>
-											<option value="Casado">Casado</option>
-											<option value="Divorciado">Divorciado</option>
-											<option value="Viuvo">Viuvo</option>
-										</select>
-										</p>
-									</td>
-
-								</tr>
-								<tr>
-									<td colspan="3">
-										<h2> Escolaridade</h2>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										<p>RA:
-									</td>
-									<td><input type="text" name="RA"></p>
-									</td>
-
-								</tr>
-								<tr>
-									<td>
-										<p>Graduação:
-									</td>
-									<td><input type="text" name="graduacao"></p>
-									</td>
-
-								</tr>
-								<tr>
-									<td>
-										<p>Instituicao
-									</td>
-									<td><select name="instituicao">
-											<?php
-
-											?>
-										</select>
-										</p>
-									</td>
-
-								</tr>
-
-								<tr>
-									<td>
-										<p>Estado
-									</td>
-									<td><select name="estado" size=1>
-											<option value='AC'>AC</option>
-											<option value='AL'> AL</option>
-											<option value='AP'> AP</option>
-											<option value='AM'> AM</option>
-											<option value='BA'> BA</option>
-											<option value='CE'> CE</option>
-											<option value='DF'> DF</option>
-											<option value='ES'> ES</option>
-											<option value='GO'> GO</option>
-											<option value='MA'> MA</option>
-											<option value='MT'> MT</option>
-											<option value='MS'> MS</option>
-											<option value='MG'> MG</option>
-											<option value='PA'> PA</option>
-											<option value='PB'> PB</option>
-											<option value='PE'> PE</option>
-											<option value='PI'> PI</option>
-											<option value='PR'> PR</option>
-											<option value='RJ'> RJ</option>
-											<option value='RN'> RN</option>
-											<option value='RS'> RS</option>
-											<option value='RO'> RO</option>
-											<option value='RR'> RR</option>
-											<option value='SC'> SC</option>
-											<option value='SP'> SP</option>
-											<option value='SE'> SE</option>
-											<option value='TO'> TO</option>
-										</select>
-										</p>
-									</td>
-								</tr>
-
-								<tr>
-									<td>
-										<p>Cidade:
-									</td>
-									<td><input type="text" name="cidadeEsc"></p>
-									</td>
-
-								</tr>
-
-								<tr>
-									<td>
-										<p>Curso:
-									</td>
-									<td><input type="text" name="curso"></p>
-									</td>
-
-								</tr>
-
-								<tr>
-									<td>
-										<p>Semeste:
-									</td>
-									<td><input type="text" name="semestre"></p>
-									</td>
-
-								</tr>
-
-								<tr>
-									<td>
-										<p>Periodo:
-									</td>
-									<td><input type="text" name="periodo"></p>
-									</td>
-
-								</tr>
-
-								<tr>
-									<td colspan="3">
-										<h2>Endereço</h2>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										<p>Cidade:
-									</td>
-									<td><input type="text" name="cidade"> </p>
-									</td>
-
-								</tr>
-								<tr>
-									<td>
-										<p>Estado
-									</td>
-									<td><select name="estado">
-											<?php
-
-											$estado = "SELECT * FROM Estados";
-											$resultEstado = mysqli_query($con, $estado);
-
-											while ($dados = mysqli_fetch_assoc($resultEstado)) {
-												$nomeEstado = $dados['nomeEstado'];
-												$idEstado = $dados['idEstado'];
-												echo "<option value='$idEstado'>$nomeEstado</option>";
-											}
-											?>
-										</select>
-										</p>
-									</td>
-
-								</tr>
-
-								<tr>
-									<td>
-										<p>Bairro:
-									</td>
-									<td><input type="text" name="bairro"> </p>
-									</td>
-
-								</tr>
-								<tr>
-									<td>
-										<p>CEP:
-									</td>
-									<td><input type="text" name="cep"> </p>
-									</td>
-
-								</tr>
-								<tr>
-									<td>
-										<p>Rua:
-									</td>
-									<td><input type="text" name="rua"> </p>
-									</td>
-
-								</tr>
-								<tr>
-									<td>
-										<p>Complemento:
-									</td>
-									<td><input type="text" name="complemento"> </p>
-									</td>
-
-								</tr>
-								<tr>
-									<td>
-										<p>Nº:
-									</td>
-									<td><input type="text" name="numero"> </p>
-									</td>
-
-								</tr>
-								<tr>
-									<td colspan="3">
-										<h2>Contato</h2>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										<p>E-mail:
-									</td>
-									<td><input type="E-mail" name="email"> </p>
-									</td>
-
-								</tr>
-								<tr>
-									<td>
-										<p>Celular:
-									</td>
-									<td><input type="text" name="celular"> </p>
-									</td>
-
-								</tr>
-								<tr>
-									<td>
-										<p>Telefone:
-									</td>
-									<td><input type="text" name="telefone"> </p>
-									</td>
-
-								</tr>
-							</table>
+							<div id="contato">
+								<h2>Contato</h2>
+								<p>E-mail<input type="E-mail" name="contato[email]" value="<?php echo $info->email;?>"></p>
+								<p>Celular<input type="text" name="contato[celular]" value="<?php echo $info->celular;?>"></p>
+								<p>Telefone<input type="text" name="contato[telefone]" value="<?php echo $info->telefone;?>"></p>
+							</div>
+							<input class="btn btn-primary btn-lg" type="submit" value="Salvar" />
 						</form>
-
-						<input class="btn btn-primary btn-lg" type="submit" value="Salvar" />
 					</div>
+
 					<div role="tabpanel" class="tab-pane" id="vagasDisp">
 						</br>
 						<center>
