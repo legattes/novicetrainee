@@ -90,7 +90,7 @@
 		</div>
 
 		<div id="buttom">
-			<input type="submit" name="cadastrar" value="Cadastrar">
+			<button class='btn btn-primary' type='submit'>Cadastrar</button>
 		</div>
 	</form>
 	<footer>
