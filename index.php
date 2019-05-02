@@ -40,7 +40,7 @@ require_once "php\dao\Estudante.php";
 					<p><h2>Inclua suas vagas de emprego no Novice Trainee Gratuitamente!</h2></p>
 
 				<p>Forma de candidatura  somente pelo site do Novice Trainee (Não Incluir nenhum link de sites terceiros )<br>
-					Vagas para comparecimento no local não estamos publicando pelo motivo de gerar muitos candidatos.<br>
+					Vagas para comparecimento no local, não estamos publicando pelo motivo de gerar muitos candidatos.<br>
 
 					Se você precisar que o candidato seja fluente ou tenha leitura em algum idioma pode publicar na língua que precisar.<br>
 				    Valido para qualquer língua. Exemplo Preciso que o candidato Fale ou leia em Inglês,<br>
