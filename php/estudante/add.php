@@ -1,7 +1,7 @@
 <?php
 
 require_once "../dao/Dao.php";
-
+//Teste
 //verifica $_POST
 //escape strings (prepare)
 
