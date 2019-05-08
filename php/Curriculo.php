@@ -7,11 +7,13 @@ use Dompdf\Dompdf;
 
 class Curriculo
 {
-    public static function generate()
+    public function generate($id)
     {
         $pdf = new DOMPDF();
 
-        $pdf->load_html(self::html());
+        ob_get_contents();
+        $pdf->load_html($this->html($id));
+        ob_clean();
 
         $pdf->render();
 
@@ -25,10 +27,12 @@ class Curriculo
         }
     }
 
-    protected static function html()
+    protected function html($id)
     {
-        $info = (new Estudante())->curriculo(Session::get('model')->estudante_id)[0];
-
+        $info = (new Estudante())->info($id)[0];
+       // echo '<pre>';
+       // print_r($info);
+       // die();
 
         //mask data_nasc
         $data_nasc = explode('-', $info->data_nasc);
@@ -43,23 +47,30 @@ class Curriculo
             body{
                 padding: 0 1em;
             }
+
+            .bold{
+                font-weight: 700;
+            }
         </style>
 
             <h1>{$info->nome}</h1>
-            <p>lucas.arantes55@gmail.com</p>
-            <p>(12) 98837-4380</p>
+            <p>{$info->email}</p>
+            <p>{$info->telefone}</p>
             <p>{$data_nasc}</p>
-            <p>São José dos Campos - SP</p>
+            <p>{$info->cidade} - {$info->estado}</p>
             <hr>
 
             <h2 style='margin-top: 50px'>Formação Acadêmica</h2>
-            <p>Instituicao</p>
-            <p>Curso</p>
-            <p>Semestre</p>
+            <p class='bold'>Instituicao</p>
+            <p>{$info->instituicao}</p>
+            <p class='bold'>Curso</p>
+            <p>{$info->curso}</p>
+            <p class='bold'>Semestre</p>
+            <p>{$info->semestre}</p>
 
-            <h2 style='margin-top: 50px'>Conhecimentos</h2>
+            <!--<h2 style='margin-top: 50px'>Conhecimentos</h2>
             <p>Conhecimento</p>
-            <p>Proficiência</p>
+            <p>Proficiência</p>-->
             ";
 
         return $html;

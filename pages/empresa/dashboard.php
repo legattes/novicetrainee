@@ -1,14 +1,16 @@
 <?php
 require_once "../../php/dao/Empresa.php";
 require_once "../../php/Session.php";
+require_once "../../php/dao/Dao.php";
+
+$cursos = (new Dao())->get('curso');
+
 
 Session::handle('empresa');
 
 $model = Session::get('model');
 
-$empresa =
-
-$info = (new Empresa())->info($model->empresa_id)[0];
+//$info = (new Empresa())->info($model->empresa_id)[0];
 ?>
 
 <!DOCTYPE html>
@@ -59,22 +61,21 @@ $info = (new Empresa())->info($model->empresa_id)[0];
 									<td>Vaga</td>
 									<td>Curso</td>
 									<td>Semestre</td>
-									<td>Area de atuação</td>
 									<td>Periodo</td>
 									<td>Remuneração</td>
 								</tr>
 
 								<?php
-								$vagas = (new Empresa())->getVagas($model->empresa_id);
+								$vagas = (new Empresa())->vagas($model->empresa_id);
 
 								foreach ($vagas as $vaga) {
-									echo '<tr>';
-									echo '<td>' . $vaga->vaga_id . '</td>';
-									echo '<td>' . $vaga->curso . '</td>';
+									echo '<tr>';									
+									echo '<td>' . $vaga->nome . '</td>';
+									echo '<td>' . $vaga->curso_nome . '</td>';
 									echo '<td>' . $vaga->semestre . '</td>';
-									echo '<td>' . $vaga->area_atuacao . '</td>';
 									echo '<td>' . $vaga->periodo . '</td>';
 									echo '<td>' . $vaga->remuneracao . '</td>';
+									echo "<td><a href='vaga.php?id={$vaga->curso_id}'<div class='btn btn-primary'>Participantes</div></td>";
 									echo '</tr>';
 								}
 								?>
@@ -146,7 +147,7 @@ $info = (new Empresa())->info($model->empresa_id)[0];
 							<table class="table">
 								<tr>
 									<td colspan="3">
-										<h2>Informações Gerais</h2>
+										<h2>Informações</h2>
 									</td>
 								</tr>						
 
@@ -156,11 +157,10 @@ $info = (new Empresa())->info($model->empresa_id)[0];
 									</td>
 									<td><input type="text" name="vaga[nome]"></p>
 									</td>
-
 								</tr>
 								<tr>
 									<td>
-										<p>Periodo
+										<p>Período
 									</td>
 									<td><select name="vaga[periodo]">
 											<option value='Manha'>Manhã</option>
@@ -172,37 +172,20 @@ $info = (new Empresa())->info($model->empresa_id)[0];
 								</tr>
 								<tr>
 									<td>
-										<p>Área de atuação
-									</td>
-									<td><input type="text" name="vaga[area_atuacao]"></p>
-									</td>
-								</tr>
-								<tr>
-									<td>
 										<p>Remuneração
 									</td>
 									<td><input type="text" name="vaga[remuneracao]"></p>
 									</td>
 								</tr>
 								<tr>
-									<td colspan="3">
-										<h2> Escolaridade</h2>
-									</td>
-								</tr>
-
-								<tr>
-									<td>
-										<p>Requisitos
-									</td>
-									<td><input type="text" name="requisitos"></p>
-									</td>
-
-								</tr>
-								<tr>
 									<td>
 										<p>Curso
 									</td>
-									<td><input type="text" name="vaga[curso]"></p>
+									<td><select name="vaga[curso]">
+										<?php foreach ($cursos as $curso){
+											echo "<option value='{$curso->curso_id}'>{$curso->nome}</option>";
+											}?>
+									</select></p>
 									</td>
 
 								</tr>

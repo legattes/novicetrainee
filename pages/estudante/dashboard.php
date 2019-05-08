@@ -6,11 +6,14 @@ Session::handle('estudante');
 
 $model = Session::get('model');
 
+$vagas = (new Estudante())->vagas($model->estudante_id);
+$participando = (new Estudante())->participando($model->estudante_id);
+
 $info = (new Estudante())->info($model->estudante_id)[0];
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
 	<meta charset="utf-8">
@@ -30,15 +33,18 @@ $info = (new Estudante())->info($model->estudante_id)[0];
 				<a href='../../php/login.php'>
 					<div class='btn btn-primary'><span>Sair</span></div>
 				</a>
+				<a href='../../php/estudante/curriculo.php' target='_blank'>
+					<div class='btn btn-primary'><span>Currículo</span></div>
+				</a>
 			</div>
 			<div>
 
 				<!-- Nav tabs -->
 				<ul class="nav nav-tabs" role="tablist">
 					<li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="pill">Home</a></li>
+					<!-- <li role="presentation"><a href="#conhecimentos" aria-controls="conhecimentos" role="tab" data-toggle="pill">Conhecimentos</a></li> -->
 					<li role="presentation"><a href="#atDados" aria-controls="atDados" role="tab" data-toggle="pill">Atualizar Dados</a></li>
 					<li role="presentation"><a href="#vagasDisp" aria-controls="vagasDisp" role="tab" data-toggle="pill">Vagas Disponíveis</a></li>
-					<li role="presentation"><a href="#curriculo" aria-controls="curriculo" role="tab" data-toggle="pill">Currículo</a></li>
 				</ul>
 
 
@@ -54,15 +60,26 @@ $info = (new Estudante())->info($model->estudante_id)[0];
 
 							</h2>
 							<br>
-							<table border="1" width="600">
+							<h3>Vagas inscritas</h3>
+							<table class="table">
 								<tr>
-									<td colspan="4">
-										<center>Vagas Inscritas</center>
-									</td>
+									<th>Vaga</th>
+									<th>Empresa</th>
+									<th>Remuneração</th>
+									<th>Período</th>
 								</tr>
-								<tr>
-									<td>TESTE</td>
-								</tr>
+								<?php 
+								
+								foreach($participando as $vaga){
+									echo '<tr>';
+									echo "<td>{$vaga->nome}</td>";
+									echo "<td>{$vaga->nome_fantasia}</td>";
+									echo "<td>{$vaga->remuneracao}</td>";
+									echo "<td>{$vaga->periodo}</td>";
+									echo "<td><a href='../../php/estudante/vaga.php?id={$model->estudante_id}&vaga={$vaga->vaga_id}'><div class='btn btn-primary'>Prova</div></a></td>";
+									echo '</tr>';
+								}
+									?>
 							</table>
 						</center>
 					</div>
@@ -76,10 +93,10 @@ $info = (new Estudante())->info($model->estudante_id)[0];
 								<h2> Escolaridade</h2>
 								<p>Instituição<select name="instituicao">
 										<?php
-										$instituicoes = (new Dao())->get('instituicao');
-										foreach ($instituicoes as $instituicao) {
-											echo "<option value='{$instituicao->instituicao_id}'>{$instituicao->nome}</option>";
-										}
+										//$instituicoes = (new Dao())->get('instituicao');
+									//	foreach ($instituicoes as $instituicao) {
+									//		echo "<option value='{$instituicao->instituicao_id}'>{$instituicao->nome}</option>";
+									//	}
 										?>
 									</select>
 								</p>
@@ -146,23 +163,54 @@ $info = (new Estudante())->info($model->estudante_id)[0];
 						</form>
 					</div>
 
+					<div role='tabpanel' class='tab-pane' id='conhecimentos'>
+					<br>
+					<a href='conhecimento.php'><div class='btn btn-primary'><span>Novo conhecimento</span></div></a>
+					<br><br>
+						<table class="table">
+							<tr>
+								<th colspan="3">Conhecimento</th>
+								<th colspan="3">Proficiência</th>
+							</tr>
+							<tr>
+								<td colspan="3">PHP</td>
+								<td colspan="3">Avançado</td>
+							</tr>
+							<tr>
+								<td colspan="3">Banco de Dados</td>
+								<td colspan="3">Intermediário</td>
+							</tr>
+							<!--FOREACH CONHECIMENTO-->
+						</table>
+					</div>
+
+
+
+
 					<div role="tabpanel" class="tab-pane" id="vagasDisp">
 						</br>
 						<center>
-							<table class="table" border="1">
+							<table class="table">
 								<tr>
-									<td colspan="3">TESTE</td>
-									<td align="right"><input class="btn btn-info" type="submit" value="Participar" /></td>
+									<th>Vaga</th>
+									<th>Empresa</th>
+									<th>Remuneração</th>
+									<th>Período</th>
+								</tr>
+								<?php 
+								
+								foreach($vagas as $vaga){
+									echo '<tr>';
+									echo "<td>{$vaga->nome}</td>";
+									echo "<td>{$vaga->nome_fantasia}</td>";
+									echo "<td>{$vaga->remuneracao}</td>";
+									echo "<td>{$vaga->periodo}</td>";
+									echo "<td><a href='../../php/estudante/vaga.php?id={$model->estudante_id}&vaga={$vaga->vaga_id}'><div class='btn btn-primary'>Participar</div></a></td>";
+									echo '</tr>';
+								}
+									?>
 							</table>
 						</center>
-					</div>
-					<div role="tabpanel" class="tab-pane" id="curriculo">
-						</br>
-						<p>CPF:<input type="text" name="cpf"></p>
-
-
-						<input class="btn btn-info" type="submit" value="Gerar Currículo" />
-
 					</div>
 				</div>
 

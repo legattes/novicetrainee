@@ -4,9 +4,11 @@ require_once "Dao.php";
 class Empresa extends Dao
 {
 
-    public function getVagas($id)
+    public function vagas($id)
     {
-        $query = "SELECT * FROM vagas 
+        $query = "SELECT V.*, C.nome as curso_nome FROM vaga V       
+        LEFT JOIN curso C
+        ON V.curso_id = C.curso_id
         WHERE empresa_id = '{$id}'";
 
         return parent::_exec($query);

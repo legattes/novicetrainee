@@ -21,18 +21,24 @@ CREATE TABLE empresa(
   senha VARCHAR(45) NOT NULL
 );
 
+CREATE TABLE curso(
+  curso_id BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  nome VARCHAR(250) NOT NULL
+);
+
+
 CREATE TABLE vaga(
   vaga_id BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  nome VARCHAR(250) NOT NULL,
   empresa_id BIGINT NOT NULL,
-  curso VARCHAR(45) NOT NULL,
+  nome VARCHAR(250) NOT NULL,  
+  curso_id BIGINT NOT NULL,
   semestre INT(2) NOT NULL,
-  area_atuacao VARCHAR(50) NOT NULL,
   remuneracao INT(10) NOT NULL,
   periodo VARCHAR(20) NOT NULL,
   vaga_status VARCHAR(2) NOT NULL DEFAULT 1,
 
-  CONSTRAINT fk_empresa_id_at_vaga FOREIGN KEY (empresa_id) REFERENCES empresa(empresa_id)
+  CONSTRAINT fk_empresa_id_at_vaga FOREIGN KEY (empresa_id) REFERENCES empresa(empresa_id),
+  CONSTRAINT fk_curso_id_at_vaga FOREIGN KEY (curso_id) REFERENCES curso(curso_id)
 );
 
 
@@ -51,11 +57,6 @@ CREATE TABLE pergunta(
 CREATE TABLE resposta(
   resposta_id BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   texto VARCHAR(250) NOT NULL
-);
-
-CREATE TABLE conhecimento(
-  conhecimento_id BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  nome VARCHAR(100) NOT NULL
 );
 
 CREATE TABLE contato(
@@ -83,17 +84,19 @@ CREATE TABLE endereco(
 
 
 
+
 --
 CREATE TABLE estudante_instituicao (
   estudante_id BIGINT NOT NULL,
   instituicao_id BIGINT NOT NULL,
   RA BIGINT NOT NULL,
-  curso VARCHAR(50) NOT NULL,
+  curso_id BIGINT NOT NULL,
   semestre INT(2) NOT NULL,
   periodo VARCHAR(15) NOT NULL,
 
   CONSTRAINT fk_estudante_id_at_estudante_instituicao FOREIGN KEY (estudante_id) REFERENCES estudante(estudante_id),
-  CONSTRAINT fk_instituicao_id_at_estudante_instituicao FOREIGN KEY (instituicao_id) REFERENCES instituicao(instituicao_id)
+  CONSTRAINT fk_instituicao_id_at_estudante_instituicao FOREIGN KEY (instituicao_id) REFERENCES instituicao(instituicao_id),
+  CONSTRAINT fk_curso_id_at_estudante_instituicao FOREIGN KEY (curso_id) REFERENCES curso(curso_id)
 );
 
 --
@@ -116,32 +119,12 @@ CREATE TABLE pergunta_resposta(
 );
 
 --
-CREATE TABLE vaga_requisitos(
-  vaga_id BIGINT NOT NULL,
-  conhecimento_id BIGINT NOT NULL,
-  proficiencia VARCHAR(20) NOT NULL,
-
-  CONSTRAINT fk_vaga_id_at_vaga_requisitos FOREIGN KEY (vaga_id) REFERENCES vaga(vaga_id),
-  CONSTRAINT fk_conhecimento_id_at_vaga_requisitos FOREIGN KEY (conhecimento_id) REFERENCES conhecimento(conhecimento_id)
-);
-
---
 CREATE TABLE estudante_vaga(
   estudante_id BIGINT NOT NULL,
   vaga_id BIGINT NOT NULL,
 
   CONSTRAINT fk_estudante_id_at_estudante_vaga FOREIGN KEY (estudante_id) REFERENCES estudante(estudante_id),
   CONSTRAINT fk_vaga_id_at_estudante_vaga FOREIGN KEY (vaga_id) REFERENCES vaga(vaga_id)
-);
-
---
-CREATE TABLE estudante_conhecimento(
-  estudante_id BIGINT NOT NULL,
-  conhecimento_id BIGINT NOT NULL,
-  proficiencia VARCHAR(20) NOT NULL,
-
-  CONSTRAINT fk_estudante_id_at_estudante_conhecimento FOREIGN KEY (estudante_id) REFERENCES estudante(estudante_id),
-  CONSTRAINT fk_conheciment_id_at_estudante_conhecimento FOREIGN KEY (conhecimento_id) REFERENCES conhecimento(conhecimento_id)
 );
 
 --
