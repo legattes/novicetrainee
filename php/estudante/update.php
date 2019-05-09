@@ -20,8 +20,8 @@ $endereco_id = (new Estudante())->endereco($estudante_id)[0];
 $contato_id = (new Estudante())->contato($estudante_id)[0];
 
 if((new Dao())->save('contato', $_POST['contato'], null, ['contato_id' => $contato_id->contato_id]) == true){
-    header('Location: ../../pages/estudante/dashboard.php');
+    header('Location: ../../pages/estudante/index.php');
 } else {
-    header('Location: ../../pages/estudante/dashboard#atDados.php');
+    header('Location: ../../pages/estudante/index#atDados.php');
 }
 ?>

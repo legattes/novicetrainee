@@ -2,6 +2,8 @@
 require_once "../../php/dao/Estudante.php";
 require_once "../../php/Session.php";
 
+
+
 Session::handle('estudante');
 
 $model = Session::get('model');
@@ -92,16 +94,21 @@ $info = (new Estudante())->info($model->estudante_id)[0];
 							<div id="Escolaridade">
 								<h2> Escolaridade</h2>
 								<p>Instituição<select name="instituicao">
-										<?php
-										//$instituicoes = (new Dao())->get('instituicao');
-									//	foreach ($instituicoes as $instituicao) {
-									//		echo "<option value='{$instituicao->instituicao_id}'>{$instituicao->nome}</option>";
-									//	}
-										?>
+								<?php
+									$instituicoes = (new Dao())->get('instituicao');
+									foreach ($instituicoes as $instituicao) {
+										echo "<option value='{$instituicao->instituicao_id}'". (($instituicao->nome == $info->instituicao) ? 'selected' : '').">{$instituicao->nome}</option>";
+									}
+								?>
 									</select>
 								</p>
 								<p>Curso<select name="instituicao[curso]">
-										<option value='Ciência da Computação'>Ciência da Computação</option>
+								<?php
+									$cursos = (new Dao())->get('curso');
+									foreach ($cursos as $curso) {
+										echo "<option value='{$curso->curso_id}'". (($curso->nome == $info->curso_nome) ? 'selected' : '').">{$curso->nome}</option>";
+									}
+								?>
 									</select></p>
 								<p>RA<input type="text" name="instituicao[RA]" value="<?php echo $info->RA;?>"></p>
 								<p>Semestre<input type="text" name="instituicao[semestre]" value="<?php echo $info->semestre;?>"></p>
@@ -118,32 +125,32 @@ $info = (new Estudante())->info($model->estudante_id)[0];
 								<p>Estado
 									<select name="endereco[estado]">
 										<option value='AC'>AC</option>
-										<option value='AL'> AL</option>
-										<option value='AP'> AP</option>
-										<option value='AM'> AM</option>
-										<option value='BA'> BA</option>
-										<option value='CE'> CE</option>
-										<option value='DF'> DF</option>
-										<option value='ES'> ES</option>
-										<option value='GO'> GO</option>
-										<option value='MA'> MA</option>
-										<option value='MT'> MT</option>
-										<option value='MS'> MS</option>
-										<option value='MG'> MG</option>
-										<option value='PA'> PA</option>
-										<option value='PB'> PB</option>
-										<option value='PE'> PE</option>
-										<option value='PI'> PI</option>
-										<option value='PR'> PR</option>
-										<option value='RJ'> RJ</option>
-										<option value='RN'> RN</option>
-										<option value='RS'> RS</option>
-										<option value='RO'> RO</option>
-										<option value='RR'> RR</option>
-										<option value='SC'> SC</option>
-										<option value='SP'> SP</option>
-										<option value='SE'> SE</option>
-										<option value='TO'> TO</option>
+										<option value='AL'>AL</option>
+										<option value='AP'>AP</option>
+										<option value='AM'>AM</option>
+										<option value='BA'>BA</option>
+										<option value='CE'>CE</option>
+										<option value='DF'>DF</option>
+										<option value='ES'>ES</option>
+										<option value='GO'>GO</option>
+										<option value='MA'>MA</option>
+										<option value='MG'>MG</option>
+										<option value='MS'>MS</option>
+										<option value='MT'>MT</option>
+										<option value='PA'>PA</option>
+										<option value='PB'>PB</option>
+										<option value='PE'>PE</option>
+										<option value='PI'>PI</option>
+										<option value='PR'>PR</option>
+										<option value='RJ'>RJ</option>
+										<option value='RN'>RN</option>
+										<option value='RO'>RO</option>
+										<option value='RR'>RR</option>
+										<option value='RS'>RS</option>
+										<option value='SC'>SC</option>
+										<option value='SE'>SE</option>
+										<option value='SP'>SP</option>
+										<option value='TO'>TO</option>
 									</select>
 								</p>
 								<p>CEP<input type="text" name="endereco[cep]" value="<?php echo $info->cep;?>"></p>

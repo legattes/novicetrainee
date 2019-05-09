@@ -10,7 +10,7 @@ Session::handle('empresa');
 
 $model = Session::get('model');
 
-//$info = (new Empresa())->info($model->empresa_id)[0];
+$info = (new Empresa())->info($model->empresa_id)[0];
 ?>
 
 <!DOCTYPE html>
@@ -56,7 +56,7 @@ $model = Session::get('model');
 						</br></br>
 						</br></br>
 						<center>
-							<table border="1" width="800">
+							<table class='table'>
 								<tr>
 									<td>Vaga</td>
 									<td>Curso</td>

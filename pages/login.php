@@ -19,8 +19,8 @@
 				<li><a href="../index.php"> Home </a></li>
 				<li><a href="estudante/add.php"> Aluno </a></li>
 				<li><a href="empresa/add.php"> Empresa </a></li>
-				<li><a href="../index.php" #contato> Contato </a></li>
-				<li><a href="../index.php" #sobre> Sobre </a></li>
+				<li><a href="../index.php#contato"> Contato </a></li>
+				<li><a href="../index.php#sobre"> Sobre </a></li>
 				<li><a href="login.php"> Login </a></li>
 			</ul>
 

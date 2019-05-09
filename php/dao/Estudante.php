@@ -16,7 +16,7 @@ class Estudante extends Dao
 
     public function info($id)
     {
-        $query = "SELECT E.*, C.*, EN.*, EI.*, I.nome as instituicao FROM estudante E
+        $query = "SELECT E.*, C.*, EN.*, EI.*, I.nome as instituicao, CU.nome as curso_nome FROM estudante E
         LEFT JOIN estudante_contato EC
         ON E.estudante_id = EC.estudante_id
 
@@ -34,6 +34,9 @@ class Estudante extends Dao
 
         LEFT JOIN instituicao I
         ON EI.instituicao_id = I.instituicao_id
+
+        LEFT JOIN curso CU
+        ON EI.curso_id = CU.curso_id
 
         WHERE E.estudante_id = '{$id}'";
 

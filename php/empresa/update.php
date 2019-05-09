@@ -18,8 +18,8 @@ $endereco_id = (new Empresa())->endereco($empresa_id)[0];
 $contato_id = (new Empresa())->contato($empresa_id)[0];
 
 if((new Dao())->save('contato', $_POST['contato'], null, ['contato_id' => $contato_id->contato_id]) == true){
-    header('Location: ../../pages/empresa/dashboard.php');
+    header('Location: ../../pages/empresa/index.php');
 } else {
-    header('Location: ../../pages/empresa/dashboard#atDados.php');
+    header('Location: ../../pages/empresa/index#atDados.php');
 }
 ?>

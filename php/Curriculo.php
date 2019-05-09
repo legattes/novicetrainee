@@ -64,7 +64,7 @@ class Curriculo
             <p class='bold'>Instituicao</p>
             <p>{$info->instituicao}</p>
             <p class='bold'>Curso</p>
-            <p>{$info->curso}</p>
+            <p>{$info->curso_nome}</p>
             <p class='bold'>Semestre</p>
             <p>{$info->semestre}</p>
 

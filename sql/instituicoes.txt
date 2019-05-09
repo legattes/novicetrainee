@@ -253,7 +253,6 @@ UIT - Universidade de Itaúna
 UNIARAXÁ - Centro Universitário do Planalto de Araxá
 UNIBH - Centro Universitário de Belo Horizonte
 UNICERP - Centro Universitário do Cerrado - Patrocínio
-UNIFEMM - Centro Universitário de Sete Lagoas "Monsenhor Messias"
 UNIFORMG - Centro Universitário de Formiga
 UNILESTE - Centro Universitário do Leste de Minas Gerais
 UNIPAC - Universidade Presidente Antônio Carlos
@@ -643,7 +642,6 @@ Uni-FACEF - Centro Universitário de Franca
 CUFSA - Centro Universitário Fundação Santo André
 FACCAMP - Faculdade de Campo Limpo Paulista
 EEP/FUMEP - Escola de Engenharia de Piracicaba
-ESEFIC - Escola Superior de Cruzeiro "Prefeito Hamilton Vieira Mendes"
 ESEFJ - Escola Superior de Educação Física de Jundiaí
 FITO - Fundação Instituto Tecnológico de Osasco
 FATEB - Faculdade de Ciências e Tecnologia de Birigui
@@ -676,7 +674,6 @@ UNISA - Universidade de Santo Amaro
 UNIVAP - Universidade do Vale do Paraíba
 UNOESTE - Universidade do Oeste Paulista
 USF - Universidade São Francisco
-UNISANT'ANNA - Universidade Sant'Anna
 CBM - Centro Universitário Barão de Mauá
 UNISALESIANO - Centro Universitário Católico Salesiano Auxilium
 CUSC - Centro Universitário São Camilo

@@ -29,7 +29,6 @@ class DAO
         $result = [];
 
         if (!($queryResult = mysqli_query($this->connection, $query))) {
-            header('HTTP/1.1 500 FAIL');
             return $result;
         }
 
@@ -41,7 +40,6 @@ class DAO
             array_push($result, (object) $item);
         }
 
-        header('HTTP/1.1 200 OK');
         return $result;
     }
 

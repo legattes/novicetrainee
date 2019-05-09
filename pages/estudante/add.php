@@ -63,7 +63,12 @@ require_once "../../php/dao/Dao.php";
 				</select>
 			</p>
 			<p>Curso<select name="curso">
-					<option value='Ciência da Computação'>Ciência da Computação</option>
+			<?php
+				$cursos = (new Dao())->get('curso');
+				foreach ($cursos as $curso) {
+					echo "<option value='{$curso->curso_id}'>{$curso->nome}</option>";
+				}
+			?>
 				</select></p>
 			<p>RA<input type="text" name="RA"></p>
 			<p>Semestre<input type="text" name="semestre"></p>

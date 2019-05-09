@@ -14,8 +14,8 @@ $vaga['periodo'] = $_POST['vaga']['periodo'];
 $vaga['remuneracao'] = $_POST['vaga']['remuneracao'];
 
  if((new Dao())->save('vaga', $vaga) == true){
-    header('Location: ../../pages/empresa/dashboard.php ');
+    header('Location: ../../pages/empresa/index.php ');
  } else {
-    header('Location: ../../pages/empresa/dashboard.php#CadastrarVag');
+    header('Location: ../../pages/empresa/index.php#CadastrarVag');
  }
 ?>

@@ -28,7 +28,7 @@ if(empty($login)){
     Session::loggout();
 } else {
     Session::login($page, $login[0]);
-    header("Location: ../pages/{$page}/dashboard.php");
+    header("Location: ../pages/{$page}/index.php");
 }
 
 ?>

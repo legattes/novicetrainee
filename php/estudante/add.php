@@ -10,7 +10,7 @@ $estudante_id = (new Dao())->save('estudante', $_POST['estudante'], true)[0];
 $estudante_instituicao['estudante_id'] = $estudante_id->estudante_id;
 $estudante_instituicao['instituicao_id'] = $_POST['instituicao'];
 $estudante_instituicao['RA'] = $_POST['RA'];
-$estudante_instituicao['curso'] = $_POST['curso'];
+$estudante_instituicao['curso_id'] = $_POST['curso'];
 $estudante_instituicao['semestre'] = $_POST['semestre'];
 $estudante_instituicao['periodo'] = $_POST['periodo'];
 
