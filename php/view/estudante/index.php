@@ -1,8 +1,6 @@
 <?php
-require_once "../../php/dao/Estudante.php";
-require_once "../../php/Session.php";
-
-
+require_once "../php/controller/Estudante.php";
+require_once "../php/Session.php";
 
 Session::handle('estudante');
 
@@ -32,10 +30,10 @@ $info = (new Estudante())->info($model->estudante_id)[0];
 		<div class="container-fuid">
 			<div class="page-header">
 				<h1>Área do Estudante</h1>
-				<a href='../../php/login.php'>
+				<a href='/estudante/login'>
 					<div class='btn btn-primary'><span>Sair</span></div>
 				</a>
-				<a href='../../php/estudante/curriculo.php' target='_blank'>
+				<a href='/estudante/curriculo' target='_blank'>
 					<div class='btn btn-primary'><span>Currículo</span></div>
 				</a>
 			</div>
@@ -90,7 +88,7 @@ $info = (new Estudante())->info($model->estudante_id)[0];
 					<!-- ATUALiZAR DADOS -->
 
 					<div role="tabpanel" class="tab-pane" id="atDados">
-						<form id="formulario" method="POST" action="../../php/estudante/update.php">
+						<form id="formulario" method="POST" action="/estudante/edit">
 							<div id="Escolaridade">
 								<h2> Escolaridade</h2>
 								<p>Instituição<select name="instituicao">
@@ -102,7 +100,7 @@ $info = (new Estudante())->info($model->estudante_id)[0];
 								?>
 									</select>
 								</p>
-								<p>Curso<select name="instituicao[curso]">
+								<p>Curso<select name="instituicao[curso_id]">
 								<?php
 									$cursos = (new Dao())->get('curso');
 									foreach ($cursos as $curso) {

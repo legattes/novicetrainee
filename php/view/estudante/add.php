@@ -1,5 +1,5 @@
 <?php
-require_once "../../php/dao/Dao.php";
+require_once "../php/dao/Dao.php";
 ?>
 <!DOCTYPE html>
 <html language="pt-br">
@@ -15,22 +15,12 @@ require_once "../../php/dao/Dao.php";
 </head>
 
 <body>
-	<header>
-		<nav>
-			<ul>
-				<li><a href="../../index.php"> Home </a></li>
-				<li><a href="add.php"> Aluno </a></li>
-				<li><a href="../empresa/add.php"> Empresa </a></li>
-				<li><a href="../../index.php" #contato> Contato </a></li>
-				<li><a href="../../index.php" #sobre> Sobre </a></li>
-				<li><a href="../login.php"> Login </a></li>
-			</ul>
-		</nav>
-	</header>
+<img src="https://i.ibb.co/Dw32DGF/Capturar.png" alt="Capturar" border="0"></a>
+	<?php include('../php/view/componentes/menu.php'); ?>
 
 	<h1>Cadastro do Estudante</h1>
 
-	<form id="formulario" method="POST" action="../../php/estudante/add.php">
+	<form id="formulario" method="POST" action="/estudante/add">
 		<div id="informacoesGerais">
 			<h2>Informações Gerais</h2>
 			<p>Nome Completo<input type="text" name="estudante[nome]"></p>
@@ -63,12 +53,12 @@ require_once "../../php/dao/Dao.php";
 				</select>
 			</p>
 			<p>Curso<select name="curso">
-			<?php
-				$cursos = (new Dao())->get('curso');
-				foreach ($cursos as $curso) {
-					echo "<option value='{$curso->curso_id}'>{$curso->nome}</option>";
-				}
-			?>
+					<?php
+					$cursos = (new Dao())->get('curso');
+					foreach ($cursos as $curso) {
+						echo "<option value='{$curso->curso_id}'>{$curso->nome}</option>";
+					}
+					?>
 				</select></p>
 			<p>RA<input type="text" name="RA"></p>
 			<p>Semestre<input type="text" name="semestre"></p>

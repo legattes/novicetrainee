@@ -17,18 +17,8 @@
 </head>
 
 <body>
-	<header>
-		<nav>
-			<ul>
-				<li><a href="../../index.php"> Home </a></li>
-				<li><a href="../estudante/add.php"> Aluno </a></li>
-				<li><a href="add.php"> Empresa </a></li>
-				<li><a href="../../index.php" #contato> Contato </a></li>
-				<li><a href="../../index.php" #sobre> Sobre </a></li>
-				<li><a href="../login.php"> Login </a></li>
-			</ul>
-		</nav>
-	</header>
+<img src="https://i.ibb.co/Dw32DGF/Capturar.png" alt="Capturar" border="0"></a>
+	<?php include('../php/view/componentes/menu.php'); ?>
 
 	<h1>Cadastro da Empresa</h1>
 

@@ -1,7 +1,7 @@
 <?php
-require_once "../../php/dao/Empresa.php";
-require_once "../../php/Session.php";
-require_once "../../php/dao/Dao.php";
+require_once "../php/controller/Empresa.php";
+require_once "../php/Session.php";
+require_once "../php/dao/Dao.php";
 
 $cursos = (new Dao())->get('curso');
 
@@ -87,7 +87,7 @@ $info = (new Empresa())->info($model->empresa_id)[0];
 
 					<!-- ATUALIZAR DADOS -->
 					<div role="tabpanel" class="tab-pane" id="atDados">
-						<form id="formulario" method="POST" action="../../php/empresa/update.php">
+						<form id="formulario" method="POST" action="empresa/edit">
 							<div id="endereco">
 								<h2>Endereço</h2>
 								<p>Cidade<input type="text" name="endereco[cidade]" value="<?php echo $info->cidade;?>"></p>
@@ -143,7 +143,7 @@ $info = (new Empresa())->info($model->empresa_id)[0];
 					<!-- CADASTRAR VAGAS -->
 
 					<div role="tabpanel" class="tab-pane" id="CadastrarVag">
-						<form id="formulario" method="POST" action="../../php/vaga/add.php">
+						<form id="formulario" method="POST" action="empresa/vaga">
 							<table class="table">
 								<tr>
 									<td colspan="3">
