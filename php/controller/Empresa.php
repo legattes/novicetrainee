@@ -117,6 +117,15 @@ class Empresa extends Dao
         }
     }
 
+    public function provaGET($args){
+        include("../php/view/empresa/prova.php");
+    }
+
+    public function provaPOST($args){
+        echo '<pre>';
+        print_r($_POST);
+    }
+
     public function vagas($id)
     {
         $query = "SELECT V.*, C.nome as curso_nome FROM vaga V       

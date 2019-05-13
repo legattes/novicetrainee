@@ -20,7 +20,7 @@ $info = (new Empresa())->info($model->empresa_id)[0];
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Área do Empresa</title>
+	<title>Área da Empresa</title>
 	<link href="../../css/bootstrap.min.css" rel="stylesheet">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<script src="../../js/bootstrap.min.js"></script>
@@ -31,7 +31,7 @@ $info = (new Empresa())->info($model->empresa_id)[0];
 		<div class="container-fuid">
 			<div class="page-header">
 				<h1>Área da Empresa</h1>
-				<a href='../../php/login.php'>
+				<a href='/empresa/login'>
 					<div class='btn btn-primary'><span>Sair</span></div>
 				</a>
 			</div>
@@ -75,7 +75,8 @@ $info = (new Empresa())->info($model->empresa_id)[0];
 									echo '<td>' . $vaga->semestre . '</td>';
 									echo '<td>' . $vaga->periodo . '</td>';
 									echo '<td>' . $vaga->remuneracao . '</td>';
-									echo "<td><a href='vaga.php?id={$vaga->curso_id}'<div class='btn btn-primary'>Participantes</div></td>";
+									//echo "<td><a href='vaga.php?id={$vaga->curso_id}'><div class='btn btn-primary'>Participantes</div></a></td>";
+									echo "<td><a href='/empresa/prova/{$vaga->vaga_id}'<div class='btn btn-primary'>Prova</div></td>";
 									echo '</tr>';
 								}
 								?>
