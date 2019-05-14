@@ -114,6 +114,7 @@ class Estudante extends Dao
         $vaga['vaga_id'] = $args[1];
 
         if ($this->save('estudante_vaga', $vaga) == true) {
+            //generate TOKEN
             header('Location: /estudante');
         } else {
             header('Location: /estudante');
@@ -127,10 +128,6 @@ class Estudante extends Dao
     public function regrasGET($args){
         include('../php/view/estudante/regras.php');
     }
-
- 
-
-
 
     public function login($cpf, $pass)
     {
@@ -209,7 +206,7 @@ class Estudante extends Dao
         on EI.estudante_id = E.estudante_id
         LEFT JOIN empresa EM
         on V.empresa_id = EM.empresa_id
-        WHERE E.estudante_id = '{$id}'";
+        WHERE E.estudante_id = '{$id}' and V.vaga_id NOT IN (SELECT vaga_id from estudante_vaga where E.estudante_id = '{$id}')";
 
         return self::_exec($query);
     }
