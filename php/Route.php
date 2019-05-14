@@ -1,6 +1,7 @@
 <?php
 require_once 'controller\Estudante.php';
 require_once 'controller\Empresa.php';
+require_once 'controller\Prova.php';
 //require_once 'Empresa.php';
 
 /**

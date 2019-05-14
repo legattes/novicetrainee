@@ -1,5 +1,6 @@
 <?php
-require_once "Dao.php";
+require_once "../php/dao/Dao.php";
+require_once "../php/Session.php";
 
 class Vaga extends Dao
 {
@@ -13,6 +14,17 @@ class Vaga extends Dao
         WHERE V.vaga_id = '{$id}'";
 
         return parent::_exec($query);
+
+    }
+
+    public function prova($id){
+        $query = "SELECT* FROM prova
+        where vaga_id = '{$id}'";
+
+        return parent::_exec($query);
+    }
+
+    public function respostas($prova_id, $pergunta_id){
 
     }
 }

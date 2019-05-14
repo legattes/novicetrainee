@@ -57,14 +57,14 @@ class DAO
     protected function getIdAfterInsert($table)
     {
         $query = "SELECT * FROM {$table} ORDER BY {$table}_id DESC LIMIT 1";
-
+        
         return $this->_exec($query);
     }
 
     protected function _update($table, $post, $where)
     {
-        $query = "UPDATE {$table} SET " . $this->params($post) . " WHERE " . $this->params($where);
-
+        $query = "UPDATE {$table} SET " . $this->params($post) . " WHERE " . $this->where($where);
+        
         if (mysqli_query($this->connection, $query)) {
             header('HTTP/1.1 200 OK');
             return true;
@@ -100,6 +100,17 @@ class DAO
         }
 
         return substr($result, 0, -1);
+    }
+
+    protected function where($params)
+    {
+        $result = '';
+
+        foreach ($params as $key => $param) {
+            $result .= "{$key} = '{$param}' AND ";
+        }
+
+        return substr($result, 0, -4);
     }
 
     protected function insertables($params)

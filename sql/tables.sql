@@ -44,7 +44,7 @@ CREATE TABLE prova(
   prova_id BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   vaga_id BIGINT NOT NULL,
 
-  CONSTRAINT fk_vaga_id_at_prova FOREIGN KEY (prova_id) REFERENCES vaga(vaga_id)
+  CONSTRAINT fk_vaga_id_at_prova FOREIGN KEY (vaga_id) REFERENCES vaga(vaga_id)
 );
 
 CREATE TABLE pergunta(
@@ -150,4 +150,26 @@ CREATE TABLE pergunta_resposta(
   
   CONSTRAINT fk_pergunta_id_at_pergunta_resposta FOREIGN KEY (pergunta_id) REFERENCES pergunta(pergunta_id),
   CONSTRAINT fk_resposta_id_at_pergunta_resposta FOREIGN KEY (resposta_id) REFERENCES resposta(resposta_id)
+);
+
+CREATE TABLE prova_estudante(
+  prova_id BIGINT NOT NULL,
+  estudante_id BIGINT NOT NULL,
+  pergunta_id BIGINT NOT NULL,
+  resposta_id BIGINT NOT NULL,
+  
+  CONSTRAINT fk_prova_id_at_prova_estudante FOREIGN KEY (prova_id) REFERENCES prova (prova_id),
+  CONSTRAINT fk_estudante_id_at_prova_estudante FOREIGN KEY (estudante_id) REFERENCES estudante (estudante_id),
+  CONSTRAINT fk_pergunta_id_at_prova_estudante FOREIGN KEY (pergunta_id) REFERENCES pergunta (pergunta_id),
+  CONSTRAINT fk_resposta_id_at_prova_estudante FOREIGN KEY (resposta_id) REFERENCES resposta (resposta_id)  
+);
+
+CREATE TABLE prova_token(
+  prova_id BIGINT NOT NULL,
+  estudante_id BIGINT NOT NULL,
+  token VARCHAR(50) NOT NULL,
+  validade BOOLEAN NOT NULL,
+
+  CONSTRAINT fk_prova_id_at_prova_token FOREIGN KEY (prova_id) REFERENCES prova (prova_id),
+  CONSTRAINT fk_estudante_id_at_prova_token FOREIGN KEY (estudante_id) REFERENCES estudante (estudante_id)
 );

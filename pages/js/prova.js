@@ -1,9 +1,41 @@
-$(document).on('click','.new-question', function(){
-    $('form .perguntas')
-    .append("<div class='pergunta'><span>Enunciado</span><div class='btn btn-primary new-answer'><span>Nova Pergunta</span></div><textarea style='display: block' name='pergunta[1]'></textarea><div class='respostas'></div></div>");
+$(document).on('click', '.new-question', function () {
+    xhr = new XMLHttpRequest();
+
+    xhr.open('GET', '/prova/pergunta', true);
+
+    perguntas = $('form .perguntas .pergunta').length + 1;
+
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4) {
+            html = xhr.responseText;  
+
+            $('form .perguntas')
+            .append(html.replace("pergunta[]", "pergunta[" + perguntas + "]")
+            .replace("id=''", "id='" + perguntas + "'"));
+        }
+    }
+
+    xhr.send();
 });
 
-$(document).on('click','.new-answer', function(){
-    $('form .respostas')
-    .append("<span>Resposta 1</span><input type='text' name='resposta[1][1]'><input type='radio' name='correta[1]' value='1'><span>Correta</span>");
+$(document).on('click', '.new-answer', function () {
+    pergunta = $(this).attr('id');        
+    div = $(this); 
+    respostas = div.parent().children('.respostas').children('.resposta').length + 1;
+    
+    xhr = new XMLHttpRequest();    
+    xhr.open('GET', '/prova/resposta', true);
+
+
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4) {
+            html = xhr.responseText;       
+            (div.parent().children('.respostas'))
+            .append(html.replace("resposta[][]", "resposta["+pergunta+"]["+respostas+"]")
+            .replace("'correta[]' value=''", "'correta["+pergunta+"]' value='"+respostas+"'"));
+        }
+    }
+
+    xhr.send();
+
 });

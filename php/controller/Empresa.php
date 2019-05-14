@@ -117,13 +117,38 @@ class Empresa extends Dao
         }
     }
 
-    public function provaGET($args){
+    public function provaGET($args)
+    {
         include("../php/view/empresa/prova.php");
     }
 
-    public function provaPOST($args){
-        echo '<pre>';
-        print_r($_POST);
+    public function provaPOST($args)
+    {
+        $vaga_id = $args[1];
+        $perguntas = $_POST['pergunta'];
+        $respostas = $_POST['resposta'];
+        $corretas = $_POST['correta'];
+        
+        $prova_id = (new Dao())->save('prova', ['vaga_id' => $vaga_id], true)[0]->prova_id;
+
+        foreach ($perguntas as $index => $pergunta) {
+            $pergunta_id = (new Dao())->save('pergunta', ['texto' => $pergunta], true)[0]->pergunta_id;
+
+            foreach ($respostas[$index] as $key => $resposta) {
+                $resposta_id = (new Dao())->save('resposta', ['texto' => $resposta], true)[0]->resposta_id;
+
+                (new Dao())->save('pergunta_resposta', [
+                    'pergunta_id' => $pergunta_id,
+                    'resposta_id' => $resposta_id,
+                    'correta' => ($corretas[$index] == $key) ? '1' : '0'
+                ]);
+            }
+
+            (new Dao())->save('prova_pergunta', [
+                'prova_id' => $prova_id,
+                'pergunta_id' => $pergunta_id
+            ]);
+        }
     }
 
     public function vagas($id)

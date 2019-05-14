@@ -75,7 +75,7 @@ $info = (new Empresa())->info($model->empresa_id)[0];
 									echo '<td>' . $vaga->semestre . '</td>';
 									echo '<td>' . $vaga->periodo . '</td>';
 									echo '<td>' . $vaga->remuneracao . '</td>';
-									//echo "<td><a href='vaga.php?id={$vaga->curso_id}'><div class='btn btn-primary'>Participantes</div></a></td>";
+									echo "<td><a href='/empresa/vaga/{$vaga->vaga_id}'><div class='btn btn-primary'>Participantes</div></a></td>";
 									echo "<td><a href='/empresa/prova/{$vaga->vaga_id}'<div class='btn btn-primary'>Prova</div></td>";
 									echo '</tr>';
 								}

@@ -108,19 +108,27 @@ class Estudante extends Dao
         }        
     }
 
-    public function vagaPOST()
+    public function vagaGET($args)
     {
-        $vaga['estudante_id'] = $_GET['id'];
-        $vaga['vaga_id'] = $_GET['vaga'];
+        $vaga['estudante_id'] = Session::get('model')->estudante_id;
+        $vaga['vaga_id'] = $args[1];
 
         if ($this->save('estudante_vaga', $vaga) == true) {
-            echo 'ok';
-            // header('Location: ../../view/login.php');
+            header('Location: /estudante');
         } else {
-            echo 'nao';
-            // header('Location: ../../view/estudante/add.php');
+            header('Location: /estudante');
         }
     }
+
+    public function provaGET($args){
+        include('../php/view/estudante/prova.php');
+    }
+
+    public function regrasGET($args){
+        include('../php/view/estudante/regras.php');
+    }
+
+ 
 
 
 

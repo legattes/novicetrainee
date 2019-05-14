@@ -21,6 +21,7 @@ $info = (new Estudante())->info($model->estudante_id)[0];
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Área do Estudante</title>
 	<link href="../../css/bootstrap.min.css" rel="stylesheet">
+	<link href="../../css/styles.css" rel="stylesheet">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<script src="../../js/bootstrap.min.js"></script>
 </head>
@@ -47,11 +48,9 @@ $info = (new Estudante())->info($model->estudante_id)[0];
 					<li role="presentation"><a href="#vagasDisp" aria-controls="vagasDisp" role="tab" data-toggle="pill">Vagas Disponíveis</a></li>
 				</ul>
 
-
 				<!-- Home -->
 				<div class="tab-content">
 					<div role="tabpanel" class="tab-pane active" id="home">
-
 						<center>
 							<h2>
 								<?php
@@ -68,18 +67,18 @@ $info = (new Estudante())->info($model->estudante_id)[0];
 									<th>Remuneração</th>
 									<th>Período</th>
 								</tr>
-								<?php 
-								
-								foreach($participando as $vaga){
+								<?php
+
+								foreach ($participando as $vaga) {
 									echo '<tr>';
 									echo "<td>{$vaga->nome}</td>";
 									echo "<td>{$vaga->nome_fantasia}</td>";
 									echo "<td>{$vaga->remuneracao}</td>";
 									echo "<td>{$vaga->periodo}</td>";
-									echo "<td><a href='../../php/estudante/vaga.php?id={$model->estudante_id}&vaga={$vaga->vaga_id}'><div class='btn btn-primary'>Prova</div></a></td>";
+									echo "<td><a href='/estudante/regras/{$vaga->vaga_id}'><div class='btn btn-primary'>Prova</div></a></td>";
 									echo '</tr>';
 								}
-									?>
+								?>
 							</table>
 						</center>
 					</div>
@@ -92,24 +91,24 @@ $info = (new Estudante())->info($model->estudante_id)[0];
 							<div id="Escolaridade">
 								<h2> Escolaridade</h2>
 								<p>Instituição<select name="instituicao">
-								<?php
-									$instituicoes = (new Dao())->get('instituicao');
-									foreach ($instituicoes as $instituicao) {
-										echo "<option value='{$instituicao->instituicao_id}'". (($instituicao->nome == $info->instituicao) ? 'selected' : '').">{$instituicao->nome}</option>";
-									}
-								?>
+										<?php
+										$instituicoes = (new Dao())->get('instituicao');
+										foreach ($instituicoes as $instituicao) {
+											echo "<option value='{$instituicao->instituicao_id}'" . (($instituicao->nome == $info->instituicao) ? 'selected' : '') . ">{$instituicao->nome}</option>";
+										}
+										?>
 									</select>
 								</p>
 								<p>Curso<select name="instituicao[curso_id]">
-								<?php
-									$cursos = (new Dao())->get('curso');
-									foreach ($cursos as $curso) {
-										echo "<option value='{$curso->curso_id}'". (($curso->nome == $info->curso_nome) ? 'selected' : '').">{$curso->nome}</option>";
-									}
-								?>
+										<?php
+										$cursos = (new Dao())->get('curso');
+										foreach ($cursos as $curso) {
+											echo "<option value='{$curso->curso_id}'" . (($curso->nome == $info->curso_nome) ? 'selected' : '') . ">{$curso->nome}</option>";
+										}
+										?>
 									</select></p>
-								<p>RA<input type="text" name="instituicao[RA]" value="<?php echo $info->RA;?>"></p>
-								<p>Semestre<input type="text" name="instituicao[semestre]" value="<?php echo $info->semestre;?>"></p>
+								<p>RA<input type="text" name="instituicao[RA]" value="<?php echo $info->RA; ?>"></p>
+								<p>Semestre<input type="text" name="instituicao[semestre]" value="<?php echo $info->semestre; ?>"></p>
 								<p>Periodo<select name="instituicao[periodo]">
 										<option value='Manha'>Manhã</option>
 										<option value='Tarde'>Tarde</option>
@@ -119,7 +118,7 @@ $info = (new Estudante())->info($model->estudante_id)[0];
 
 							<div id="endereco">
 								<h2>Endereço</h2>
-								<p>Cidade<input type="text" name="endereco[cidade]" value="<?php echo $info->cidade;?>"></p>
+								<p>Cidade<input type="text" name="endereco[cidade]" value="<?php echo $info->cidade; ?>"></p>
 								<p>Estado
 									<select name="endereco[estado]">
 										<option value='AC'>AC</option>
@@ -151,27 +150,29 @@ $info = (new Estudante())->info($model->estudante_id)[0];
 										<option value='TO'>TO</option>
 									</select>
 								</p>
-								<p>CEP<input type="text" name="endereco[cep]" value="<?php echo $info->cep;?>"></p>
-								<p>Bairro<input type="text" name="endereco[bairro]" value="<?php echo $info->bairro;?>"></p>
-								<p>Rua<input type="text" name="endereco[rua]" value="<?php echo $info->rua;?>"></p>
-								<p>Número<input type="text" name="endereco[numero]" value="<?php echo $info->numero;?>"></p>
-								<p>Complemento<input type="text" name="endereco[complemento]" value="<?php echo $info->complemento ?? '';?>"></p>
+								<p>CEP<input type="text" name="endereco[cep]" value="<?php echo $info->cep; ?>"></p>
+								<p>Bairro<input type="text" name="endereco[bairro]" value="<?php echo $info->bairro; ?>"></p>
+								<p>Rua<input type="text" name="endereco[rua]" value="<?php echo $info->rua; ?>"></p>
+								<p>Número<input type="text" name="endereco[numero]" value="<?php echo $info->numero; ?>"></p>
+								<p>Complemento<input type="text" name="endereco[complemento]" value="<?php echo $info->complemento ?? ''; ?>"></p>
 							</div>
 
 							<div id="contato">
 								<h2>Contato</h2>
-								<p>E-mail<input type="E-mail" name="contato[email]" value="<?php echo $info->email;?>"></p>
-								<p>Celular<input type="text" name="contato[celular]" value="<?php echo $info->celular;?>"></p>
-								<p>Telefone<input type="text" name="contato[telefone]" value="<?php echo $info->telefone;?>"></p>
+								<p>E-mail<input type="E-mail" name="contato[email]" value="<?php echo $info->email; ?>"></p>
+								<p>Celular<input type="text" name="contato[celular]" value="<?php echo $info->celular; ?>"></p>
+								<p>Telefone<input type="text" name="contato[telefone]" value="<?php echo $info->telefone; ?>"></p>
 							</div>
 							<input class="btn btn-primary btn-lg" type="submit" value="Salvar" />
 						</form>
 					</div>
 
 					<div role='tabpanel' class='tab-pane' id='conhecimentos'>
-					<br>
-					<a href='conhecimento.php'><div class='btn btn-primary'><span>Novo conhecimento</span></div></a>
-					<br><br>
+						<br>
+						<a href='conhecimento.php'>
+							<div class='btn btn-primary'><span>Novo conhecimento</span></div>
+						</a>
+						<br><br>
 						<table class="table">
 							<tr>
 								<th colspan="3">Conhecimento</th>
@@ -202,18 +203,18 @@ $info = (new Estudante())->info($model->estudante_id)[0];
 									<th>Remuneração</th>
 									<th>Período</th>
 								</tr>
-								<?php 
-								
-								foreach($vagas as $vaga){
+								<?php
+
+								foreach ($vagas as $vaga) {
 									echo '<tr>';
 									echo "<td>{$vaga->nome}</td>";
 									echo "<td>{$vaga->nome_fantasia}</td>";
 									echo "<td>{$vaga->remuneracao}</td>";
 									echo "<td>{$vaga->periodo}</td>";
-									echo "<td><a href='../../php/estudante/vaga.php?id={$model->estudante_id}&vaga={$vaga->vaga_id}'><div class='btn btn-primary'>Participar</div></a></td>";
+									echo "<td><a href='/estudante/vaga/{$vaga->vaga_id}'><div class='btn btn-primary'>Participar</div></a></td>";
 									echo '</tr>';
 								}
-									?>
+								?>
 							</table>
 						</center>
 					</div>

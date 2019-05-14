@@ -1,0 +1,13 @@
+.pergunta{
+	padding: 1em 0;
+	margin: 1em 0;
+}
+
+.timer{
+	position: fixed;
+	background-color: cadetblue;
+	color: white;
+	width: 200px;
+	right: 0;
+	padding: 1em;
+}
