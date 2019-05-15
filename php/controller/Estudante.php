@@ -2,6 +2,7 @@
 require_once "../php/dao/Dao.php";
 require_once "../php/Session.php";
 require_once "../php/Curriculo.php";
+require_once "../php/controller/Prova.php";
 
 class Estudante extends Dao
 {
@@ -121,12 +122,29 @@ class Estudante extends Dao
         }
     }
 
+    public function regrasGET($args){
+        include('../php/view/estudante/regras.php');
+    }
+
     public function provaGET($args){
         include('../php/view/estudante/prova.php');
     }
 
-    public function regrasGET($args){
-        include('../php/view/estudante/regras.php');
+    public function provaPOST($args){
+        $prova_id = $args[1];
+        $perguntas = $_POST['pergunta'];
+        $respostas = $_POST['resposta'];        
+        
+        foreach($perguntas as $index => $pergunta){
+            (new Dao())->save('prova_estudante', [
+                'prova_id' => $prova_id,
+                'estudante_id' => Session::get('model')->estudante_id,
+                'pergunta_id' => $index,
+                'resposta_id' => $respostas[$index]
+                ]);
+            }
+
+        Prova::validateToken($prova_id);
     }
 
     public function login($cpf, $pass)

@@ -1,6 +1,7 @@
 <?php
 require_once "../php/dao/Dao.php";
 require_once "../php/Session.php";
+require_once "../php/model/Vaga.php";
 require_once "../php/Validation.php";
 
 class Empresa extends Dao
@@ -42,6 +43,10 @@ class Empresa extends Dao
     public function addGET()
     {
         include('../php/view/empresa/add.php');
+    }
+
+    public function vagaGET($args){
+        include('../php/view/empresa/vaga.php');
     }
 
     public function addPOST()
@@ -100,6 +105,8 @@ class Empresa extends Dao
             header('Location: /empresa');
         }
     }
+
+ 
 
     public function vagaPOST()
     {

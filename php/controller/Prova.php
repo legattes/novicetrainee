@@ -42,7 +42,7 @@ class Prova extends Dao
         return parent::_exec($query);
     }
 
-    public function generateToken($prova_id)
+    public static function generateToken($prova_id)
     {
         $model = Session::get('model');
 
@@ -56,7 +56,7 @@ class Prova extends Dao
         ]);
     }
 
-    public function validateToken($prova_id)
+    public static function validateToken($prova_id)
     {
         $model = Session::get('model');
 
