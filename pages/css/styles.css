@@ -1,6 +1,80 @@
+nav ul a li {
+	display: inline-block;
+	vertical-align: middle;
+	font-size: 1.5em;
+	height: 99%;
+	padding: 0 2em;
+}
+
+.login-input{
+	text-align: center;
+	margin: 0 auto;
+	width: 30%;
+}
+
+.input-group + .input-group, #button{
+	margin-top: 1em;
+}
+
+.logo img{
+	width: 25%;
+}
+
+.logo{
+	text-align: center;
+	margin-top: 1em;
+}
+
+
+.navbar, ul{
+	margin: 0 !important;
+}
+
+ul {
+	height: 5em;
+	vertical-align: middle;
+	line-height: 4.5em;
+}
+
+nav a + a {
+	margin-left: 2em;
+}
+
+nav{
+	height: 5em;
+}
+
+nav ul a li {
+	color: white !important;
+	text-decoration: none !important;
+}
+
+nav ul li:hover{
+	background-color: #286090;
+	text-decoration: none !important;
+}
+
+.container-fluid{
+	text-align: center;
+}
+
+footer{
+	text-align: center;
+	vertical-align: middle;
+	padding: 1em 0;
+	margin-top: 4em;
+	background-color: #353535;
+	color: white;
+}
+
+
 .pergunta{
 	padding: 1em 0;
 	margin: 1em 0;
+}
+
+.respostas .resposta{
+	width: 50%;
 }
 
 .timer{
@@ -10,4 +84,12 @@
 	width: 200px;
 	right: 0;
 	padding: 1em;
+}
+
+.row{
+	margin: 1em 0;
+}
+
+.left{
+	text-align: left;
 }

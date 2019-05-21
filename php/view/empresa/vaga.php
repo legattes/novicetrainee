@@ -1,6 +1,6 @@
 <?php
 require_once "../php/controller/Empresa.php";
-require_once "../php/controller/Vaga.php";
+require_once "../php/model/Vaga.php";
 require_once "../php/Session.php";
 require_once "../php/dao/Dao.php";
 
@@ -34,9 +34,19 @@ $model = Session::get('model');*/
 				</a>
 			</div>
 			<div class='content'>
+			<table class="table">
+			<tr>
+				<th>Estudante</th>
+			</tr>
 				<?php foreach($participantes as $participante){
-					
+					echo '<tr>';
+					echo "<td>{$participante->nome}</td>";
+					echo "<td><a href='/estudante/curriculo/1' target='_blank'><div class='btn btn-primary'>Curriculo</div></a></td>";
+					echo "<td><div class='btn btn-primary'>Prova</div></td>";
+					echo '</tr>';
 				}?>
+
+			</table>
 			</div>
 		</div>
 	</div>

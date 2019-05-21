@@ -22,6 +22,7 @@ $info = (new Empresa())->info($model->empresa_id)[0];
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Área da Empresa</title>
 	<link href="../../css/bootstrap.min.css" rel="stylesheet">
+	<link href="../../css/styles.css" rel="stylesheet">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<script src="../../js/bootstrap.min.js"></script>
 </head>
@@ -51,7 +52,7 @@ $info = (new Empresa())->info($model->empresa_id)[0];
 						<center>
 							<p>
 								<h2><?php echo $model->nome_fantasia; ?></h2>
-							</p>
+</p>
 						</center>
 						</br></br>
 						</br></br>
@@ -91,9 +92,9 @@ $info = (new Empresa())->info($model->empresa_id)[0];
 						<form id="formulario" method="POST" action="empresa/edit">
 							<div id="endereco">
 								<h2>Endereço</h2>
-								<p>Cidade<input type="text" name="endereco[cidade]" value="<?php echo $info->cidade;?>"></p>
-								<p>Estado
-									<select name="endereco[estado]">
+								<div class='row'><div class='col-md-2 left'><label>Cidade</label></div><div class='col-md-6 left'><input type="text" name="endereco[cidade]" value="<?php echo $info->cidade;?>"></div></div>
+								<div class='row'><div class='col-md-2 left'><label>Estado
+								</label></div><div class='col-md-6 left'><select name="endereco[estado]">
 										<option value='AC'>AC</option>
 										<option value='AL'> AL</option>
 										<option value='AP'> AP</option>
@@ -121,22 +122,22 @@ $info = (new Empresa())->info($model->empresa_id)[0];
 										<option value='SP'> SP</option>
 										<option value='SE'> SE</option>
 										<option value='TO'> TO</option>
-									</select>
-								</p>
-								<p>CEP<input type="text" name="endereco[cep]" value="<?php echo $info->cep;?>"></p>
-								<p>Bairro<input type="text" name="endereco[bairro]" value="<?php echo $info->bairro;?>"></p>
-								<p>Rua<input type="text" name="endereco[rua]" value="<?php echo $info->rua;?>"></p>
-								<p>Número<input type="text" name="endereco[numero]" value="<?php echo $info->numero;?>"></p>
-								<p>Complemento<input type="text" name="endereco[complemento]" value="<?php echo $info->complemento;?>"></p>
+									</select></div></div>
+
+								<div class='row'><div class='col-md-2 left'><label>CEP</label></div><div class='col-md-6 left'><input type="text" name="endereco[cep]" value="<?php echo $info->cep;?>"></div></div>
+								<div class='row'><div class='col-md-2 left'><label>Bairro</label></div><div class='col-md-6 left'><input type="text" name="endereco[bairro]" value="<?php echo $info->bairro;?>"></div></div>
+								<div class='row'><div class='col-md-2 left'><label>Rua</label></div><div class='col-md-6 left'><input type="text" name="endereco[rua]" value="<?php echo $info->rua;?>"></div></div>
+								<div class='row'><div class='col-md-2 left'><label>Número</label></div><div class='col-md-6 left'><input type="text" name="endereco[numero]" value="<?php echo $info->numero;?>"></div></div>
+								<div class='row'><div class='col-md-2 left'><label>Complemento</label></div><div class='col-md-6 left'><input type="text" name="endereco[complemento]" value="<?php echo $info->complemento;?>"></div></div>
 							</div>
 
 							<div id="contato">
 								<h2>Contato</h2>
-								<p>E-mail<input type="E-mail" name="contato[email]" value="<?php echo $info->email;?>"></p>
-								<p>Celular<input type="text" name="contato[celular]" value="<?php echo $info->celular;?>"></p>
-								<p>Telefone<input type="text" name="contato[telefone]" value="<?php echo $info->telefone;?>"></p>
+								<div class='row'><div class='col-md-2 left'><label>E-mail</label></div><div class='col-md-6 left'><input type="E-mail" name="contato[email]" value="<?php echo $info->email;?>"></div></div>
+								<div class='row'><div class='col-md-2 left'><label>Celular</label></div><div class='col-md-6 left'><input type="text" name="contato[celular]" value="<?php echo $info->celular;?>"></div></div>
+								<div class='row'><div class='col-md-2 left'><label>Telefone</label></div><div class='col-md-6 left'><input type="text" name="contato[telefone]" value="<?php echo $info->telefone;?>"></div></div>
 							</div>
-							<input class="btn btn-primary btn-lg" type="submit" value="Salvar" />
+							</label></div><div class='col-md-6 left'><input class="btn btn-primary btn-lg" type="submit" value="Salvar" />
 						</form>
 					</div>
 
@@ -154,54 +155,54 @@ $info = (new Empresa())->info($model->empresa_id)[0];
 
 								<tr>
 									<td>
-										<p>Nome
+										<div class='row'><div class='col-md-2 left'><label>Nome
 									</td>
-									<td><input type="text" name="vaga[nome]"></p>
+									<td></label></div><div class='col-md-6 left'><input type="text" name="vaga[nome]"></div></div>
 									</td>
 								</tr>
 								<tr>
 									<td>
-										<p>Período
+										<div class='row'><div class='col-md-2 left'><label>Período
 									</td>
 									<td><select name="vaga[periodo]">
 											<option value='Manha'>Manhã</option>
 											<option value='Tarde'>Tarde</option>
 											<option value='Noite'>Noite</option>
 										</select>
-										</p>
+										</div></div>
 									</td>
 								</tr>
 								<tr>
 									<td>
-										<p>Remuneração
+										<div class='row'><div class='col-md-2 left'><label>Remuneração
 									</td>
-									<td><input type="text" name="vaga[remuneracao]"></p>
+									<td></label></div><div class='col-md-6 left'><input type="text" name="vaga[remuneracao]"></div></div>
 									</td>
 								</tr>
 								<tr>
 									<td>
-										<p>Curso
+										<div class='row'><div class='col-md-2 left'><label>Curso
 									</td>
 									<td><select name="vaga[curso]">
 										<?php foreach ($cursos as $curso){
 											echo "<option value='{$curso->curso_id}'>{$curso->nome}</option>";
 											}?>
-									</select></p>
+									</select></div></div>
 									</td>
 
 								</tr>
 
 								<tr>
 									<td>
-										<p>Semestre
+										<div class='row'><div class='col-md-2 left'><label>Semestre
 									</td>
-									<td><input type="text" name="vaga[semestre]"></p>
+									<td></label></div><div class='col-md-6 left'><input type="text" name="vaga[semestre]"></div></div>
 									</td>
 
 								</tr>
 								
 								<tr>
-									<td><input class="btn btn-primary " type="submit" value="Salvar" /></td>
+									<td></label></div><div class='col-md-6 left'><input class="btn btn-primary " type="submit" value="Salvar" /></td>
 								</tr>
 						</form>
 					</div>

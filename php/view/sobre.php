@@ -12,14 +12,13 @@
 	<meta name="description" content="Novice Trainee.">
 	<meta name="keywords" content="Estágio, emprego, currículo, currículum, sites">
 	<meta name="robots" content="index, follow">
-	<link rel="stylesheet" href="css/style.css">
-	<link href='https://fonts.googleapis.com/css?family=Lato:400,300,700' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="/css/styles.css">
+	<link rel='stylesheet' href='/css/bootstrap.min.css'>
 </head>
 
 <body>
-	<img src="https://i.ibb.co/Dw32DGF/Capturar.png" alt="Capturar" border="0"></a>
-
 	<?php include('componentes/menu.php');?>
+	<div class='container-fluid'>
 	<section id="sobre">
 		<div id="empresa">
 
@@ -59,6 +58,7 @@
 		<p><strong>CONTATE-NOS</strong> via e-mail exemplo@exemplo.com.br ou através de nosso telefone <strong>(00)00000-000!</strong></p>
 
 	</section>
+</div>
 	<footer>
 		<h6>Desenvolvido por: Grupo - Faculdade Olavo Bilac</h6>
 	</footer>

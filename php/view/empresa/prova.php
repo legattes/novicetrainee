@@ -18,7 +18,10 @@ $model = Session::get('model');*/
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Área do Empresa</title>
-	<link href="../../css/bootstrap.min.css" rel="stylesheet">
+	
+	<link rel="stylesheet" href="/css/styles.css">
+	<link rel='stylesheet' href='/css/bootstrap.min.css'>
+
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<script src="/js/bootstrap.min.js"></script>
 	<script type='text/javascript' src="/js/prova.js"></script>
@@ -39,7 +42,7 @@ $model = Session::get('model');*/
 				<form name='prova' method='POST' action="/empresa/prova/<?php echo $args[1];?>">
 					<div class='perguntas'>
 					</div>
-					<button type='submit'>submit</button>
+					<button type='submit' class='btn btn-primary'>Salvar</button>
 				</form>
 			</div>
 		</div>

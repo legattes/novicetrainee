@@ -11,30 +11,30 @@
 	<meta name="viewport" content="width = device-width, initial-scale = 1">
 	<meta name="keywords" content="Estágio, emprego, currículo, currículum, sites">
 	<meta name="robots" content="index, follow">
-	<link rel="stylesheet" href="../../css/style.css">
-	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-	<link href='https://fonts.googleapis.com/css?family=Lato:400,300,700' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="/css/styles.css">
+	<link rel='stylesheet' href='/css/bootstrap.min.css'>
 </head>
 
 <body>
-<img src="https://i.ibb.co/Dw32DGF/Capturar.png" alt="Capturar" border="0"></a>
-	<?php include('../php/view/componentes/menu.php'); ?>
+	<?php include('../php/view/componentes/menu.php');?>
+	<div class='container-fluid'>
 
 	<h1>Cadastro da Empresa</h1>
 
 	<form id="formulario" method="POST" action="../../php/empresa/add.php">
 		<div id="informacoesGerais">
 			<h2>Informações Gerais</h2>
-			<p>CNPJ<input type="text" name="empresa[cnpj]"> </p>
-			<p>Nome Fantasia<input type="text" name="empresa[nome_fantasia]"> </p>
-			<p>Razão Social<input type="text" name="empresa[razao_social]"> </p>
-			<p>Senha de acesso: <input type="password" name="empresa[senha]"></p>
+			<div class='row'><div class='col-md-3 col-md-offset-2 left'><label>CNPJ</label></div><div class='col-md-6 left'><input type="text" name="empresa[cnpj]"> </div></div>
+			<div class='row'><div class='col-md-3 col-md-offset-2 left'><label>Nome Fantasia</label></div><div class='col-md-6 left'><input type="text" name="empresa[nome_fantasia]"> </div></div>
+			<div class='row'><div class='col-md-3 col-md-offset-2 left'><label>Razão Social</label></div><div class='col-md-6 left'><input type="text" name="empresa[razao_social]"> </div></div>
+			<div class='row'><div class='col-md-3 col-md-offset-2 left'><label>Senha de acesso: </label></div><div class='col-md-6 left'><input type="password" name="empresa[senha]"></div></div>
 		</div>
 
 		<div id="endereco">
 			<h2>Endereço</h2>
-			<p>Cidade<input type="text" name="endereco[cidade]"></p>
-			<p>Estado
+			<div class='row'><div class='col-md-3 col-md-offset-2 left'><label>Cidade</label></div><div class='col-md-6 left'><input type="text" name="endereco[cidade]"></div></div>
+			<div class='row'><div class='col-md-3 col-md-offset-2 left'><label>Estado</label></div>
+			<div class='col-md-6 left'>
 				<select name="endereco[estado]">
 					<option value='AC'>AC</option>
 					<option value='AL'> AL</option>
@@ -64,19 +64,19 @@
 					<option value='SE'> SE</option>
 					<option value='TO'> TO</option>
 				</select>
-			</p>
-			<p>CEP<input type="text" name="endereco[cep]"></p>
-			<p>Bairro<input type="text" name="endereco[bairro]"></p>
-			<p>Rua<input type="text" name="endereco[rua]"></p>
-			<p>Número<input type="text" name="endereco[numero]"></p>
-			<p>Complemento<input type="text" name="endereco[complemento]"></p>
+			</div></div>
+			<div class='row'><div class='col-md-3 col-md-offset-2 left'><label>CEP</label></div><div class='col-md-6 left'><input type="text" name="endereco[cep]"></div></div>
+			<div class='row'><div class='col-md-3 col-md-offset-2 left'><label>Bairro</label></div><div class='col-md-6 left'><input type="text" name="endereco[bairro]"></div></div>
+			<div class='row'><div class='col-md-3 col-md-offset-2 left'><label>Rua</label></div><div class='col-md-6 left'><input type="text" name="endereco[rua]"></div></div>
+			<div class='row'><div class='col-md-3 col-md-offset-2 left'><label>Número</label></div><div class='col-md-6 left'><input type="text" name="endereco[numero]"></div></div>
+			<div class='row'><div class='col-md-3 col-md-offset-2 left'><label>Complemento</label></div><div class='col-md-6 left'><input type="text" name="endereco[complemento]"></div></div>
 		</div>
 
 		<div id="contato">
 			<h2>Contato</h2>
-			<p>E-mail<input type="E-mail" name="contato[email]"></p>
-			<p>Celular<input type="text" name="contato[celular]"></p>
-			<p>Telefone<input type="text" name="contato[telefone]"></p>
+			<div class='row'><div class='col-md-3 col-md-offset-2 left'><label>E-mail</label></div><div class='col-md-6 left'><input type="E-mail" name="contato[email]"></div></div>
+			<div class='row'><div class='col-md-3 col-md-offset-2 left'><label>Celular</label></div><div class='col-md-6 left'><input type="text" name="contato[celular]"></div></div>
+			<div class='row'><div class='col-md-3 col-md-offset-2 left'><label>Telefone</label></div><div class='col-md-6 left'><input type="text" name="contato[telefone]"></div></div>
 		</div>
 
 		<div id="buttom">

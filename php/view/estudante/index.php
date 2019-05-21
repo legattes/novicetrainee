@@ -90,7 +90,7 @@ $info = (new Estudante())->info($model->estudante_id)[0];
 						<form id="formulario" method="POST" action="/estudante/edit">
 							<div id="Escolaridade">
 								<h2> Escolaridade</h2>
-								<p>Instituição<select name="instituicao">
+								<div class='row'><div class='col-md-2 left'><label>Instituição</label></div><div class='col-md-6 left'><select name="instituicao">
 										<?php
 										$instituicoes = (new Dao())->get('instituicao');
 										foreach ($instituicoes as $instituicao) {
@@ -98,29 +98,29 @@ $info = (new Estudante())->info($model->estudante_id)[0];
 										}
 										?>
 									</select>
-								</p>
-								<p>Curso<select name="instituicao[curso_id]">
+								</div></div>
+								<div class='row'><div class='col-md-2 left'><label>Curso</label></div><div class='col-md-6 left'><select name="instituicao[curso_id]">
 										<?php
 										$cursos = (new Dao())->get('curso');
 										foreach ($cursos as $curso) {
 											echo "<option value='{$curso->curso_id}'" . (($curso->nome == $info->curso_nome) ? 'selected' : '') . ">{$curso->nome}</option>";
 										}
 										?>
-									</select></p>
-								<p>RA<input type="text" name="instituicao[RA]" value="<?php echo $info->RA; ?>"></p>
-								<p>Semestre<input type="text" name="instituicao[semestre]" value="<?php echo $info->semestre; ?>"></p>
-								<p>Periodo<select name="instituicao[periodo]">
+									</select></div></div>
+								<div class='row'><div class='col-md-2 left'><label>RA</label></div><div class='col-md-6 left'><input type="text" name="instituicao[RA]" value="<?php echo $info->RA; ?>"></div></div>
+								<div class='row'><div class='col-md-2 left'><label>Semestre</label></div><div class='col-md-6 left'><input type="text" name="instituicao[semestre]" value="<?php echo $info->semestre; ?>"></div></div>
+								<div class='row'><div class='col-md-2 left'><label>Periodo</label></div><div class='col-md-6 left'><select name="instituicao[periodo]">
 										<option value='Manha'>Manhã</option>
 										<option value='Tarde'>Tarde</option>
 										<option value='Noite'>Noite</option>
-									</select></p>
+									</select></div></div>
 							</div>
 
 							<div id="endereco">
 								<h2>Endereço</h2>
-								<p>Cidade<input type="text" name="endereco[cidade]" value="<?php echo $info->cidade; ?>"></p>
-								<p>Estado
-									<select name="endereco[estado]">
+								<div class='row'><div class='col-md-2 left'><label>Cidade</label></div><div class='col-md-6 left'><input type="text" name="endereco[cidade]" value="<?php echo $info->cidade; ?>"></div></div>
+								<div class='row'><div class='col-md-2 left'><label>Estado
+									</label></div><div class='col-md-6 left'><select name="endereco[estado]">
 										<option value='AC'>AC</option>
 										<option value='AL'>AL</option>
 										<option value='AP'>AP</option>
@@ -149,45 +149,23 @@ $info = (new Estudante())->info($model->estudante_id)[0];
 										<option value='SP'>SP</option>
 										<option value='TO'>TO</option>
 									</select>
-								</p>
-								<p>CEP<input type="text" name="endereco[cep]" value="<?php echo $info->cep; ?>"></p>
-								<p>Bairro<input type="text" name="endereco[bairro]" value="<?php echo $info->bairro; ?>"></p>
-								<p>Rua<input type="text" name="endereco[rua]" value="<?php echo $info->rua; ?>"></p>
-								<p>Número<input type="text" name="endereco[numero]" value="<?php echo $info->numero; ?>"></p>
-								<p>Complemento<input type="text" name="endereco[complemento]" value="<?php echo $info->complemento ?? ''; ?>"></p>
+								</div></div>
+								<div class='row'><div class='col-md-2 left'><label>CEP</label></div><div class='col-md-6 left'><input type="text" name="endereco[cep]" value="<?php echo $info->cep; ?>"></div></div>
+								<div class='row'><div class='col-md-2 left'><label>Bairro</label></div><div class='col-md-6 left'><input type="text" name="endereco[bairro]" value="<?php echo $info->bairro; ?>"></div></div>
+								<div class='row'><div class='col-md-2 left'><label>Rua</label></div><div class='col-md-6 left'><input type="text" name="endereco[rua]" value="<?php echo $info->rua; ?>"></div></div>
+								<div class='row'><div class='col-md-2 left'><label>Número</label></div><div class='col-md-6 left'><input type="text" name="endereco[numero]" value="<?php echo $info->numero; ?>"></div></div>
+								<div class='row'><div class='col-md-2 left'><label>Complemento</label></div><div class='col-md-6 left'><input type="text" name="endereco[complemento]" value="<?php echo $info->complemento ?? ''; ?>"></div></div>
 							</div>
 
 							<div id="contato">
 								<h2>Contato</h2>
-								<p>E-mail<input type="E-mail" name="contato[email]" value="<?php echo $info->email; ?>"></p>
-								<p>Celular<input type="text" name="contato[celular]" value="<?php echo $info->celular; ?>"></p>
-								<p>Telefone<input type="text" name="contato[telefone]" value="<?php echo $info->telefone; ?>"></p>
+								<div class='row'><div class='col-md-2 left'><label>E-mail</label></div><div class='col-md-6 left'><input type="E-mail" name="contato[email]" value="<?php echo $info->email; ?>"></div></div>
+								<div class='row'><div class='col-md-2 left'><label>Celular</label></div><div class='col-md-6 left'><input type="text" name="contato[celular]" value="<?php echo $info->celular; ?>"></div></div>
+								<div class='row'><div class='col-md-2 left'><label>Telefone</label></div><div class='col-md-6 left'><input type="text" name="contato[telefone]" value="<?php echo $info->telefone; ?>"></div></div>
 							</div>
+							
 							<input class="btn btn-primary btn-lg" type="submit" value="Salvar" />
 						</form>
-					</div>
-
-					<div role='tabpanel' class='tab-pane' id='conhecimentos'>
-						<br>
-						<a href='conhecimento.php'>
-							<div class='btn btn-primary'><span>Novo conhecimento</span></div>
-						</a>
-						<br><br>
-						<table class="table">
-							<tr>
-								<th colspan="3">Conhecimento</th>
-								<th colspan="3">Proficiência</th>
-							</tr>
-							<tr>
-								<td colspan="3">PHP</td>
-								<td colspan="3">Avançado</td>
-							</tr>
-							<tr>
-								<td colspan="3">Banco de Dados</td>
-								<td colspan="3">Intermediário</td>
-							</tr>
-							<!--FOREACH CONHECIMENTO-->
-						</table>
 					</div>
 
 

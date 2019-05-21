@@ -10,70 +10,72 @@ require_once "../php/dao/Dao.php";
 	<meta name="viewport" content="width = device-width, initial-scale = 1">
 	<meta name="keywords" content="Estágio, emprego, currículo, currículum, sites">
 	<meta name="robots" content="index, follow">
-	<link rel="stylesheet" href="../../css/style.css">
-	<link href='https://fonts.googleapis.com/css?family=Lato:400,300,700' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="/css/styles.css">
+	<link rel='stylesheet' href='/css/bootstrap.min.css'>
 </head>
 
 <body>
-<img src="https://i.ibb.co/Dw32DGF/Capturar.png" alt="Capturar" border="0"></a>
-	<?php include('../php/view/componentes/menu.php'); ?>
+<?php include('../php/view/componentes/menu.php');?>
+	<div class='container-fluid'>	
 
 	<h1>Cadastro do Estudante</h1>
 
 	<form id="formulario" method="POST" action="/estudante/add">
 		<div id="informacoesGerais">
 			<h2>Informações Gerais</h2>
-			<p>Nome Completo<input type="text" name="estudante[nome]"></p>
-			<p>CPF<input type="text" name="estudante[cpf]"></p>
-			<p>Senha de acesso<input type="password" name="estudante[senha]"></p>
-			<p>Data de Nascimento<input type="Date" name="estudante[data_nasc]"></p>
-			<p>Sexo<select name="estudante[sexo]">
+			<div class='row'><div class='col-md-2 col-md-offset-2 left'><label>Nome Completo</label></div><div class='col-md-6 left'><input type="text" name="estudante[nome]"></div></div>
+			<div class='row'><div class='col-md-2 col-md-offset-2 left'><label>CPF</label></div><div class='col-md-6 left'><input type="text" name="estudante[cpf]"></div></div>
+			<div class='row'><div class='col-md-2 col-md-offset-2 left'><label>Senha de acesso</label></div><div class='col-md-6 left'><input type="password" name="estudante[senha]"></div></div>
+			<div class='row'><div class='col-md-2 col-md-offset-2 left'><label>Data de Nascimento</label></div><div class='col-md-6 left'><input type="Date" name="estudante[data_nasc]"></div></div>
+			<div class='row'><div class='col-md-2 col-md-offset-2 left'><label>Sexo</label></div><div class='col-md-6 left'><select name="estudante[sexo]">
 					<option value="M">Masculino</option>
 					<option value="F">Feminino</option>
-				</select>
-			</p>
-			<p>Estado Civil<select name="estudante[estado_civil]">
+				</select></div></div>
+			
+			<div class='row'><div class='col-md-2 col-md-offset-2 left'><label>Estado Civil</label></div><div class='col-md-6 left'><select name="estudante[estado_civil]">
 					<option value="Solteiro">Solteiro</option>
 					<option value="Casado">Casado</option>
 					<option value="Divorciado">Divorciado</option>
 					<option value="Viuvo">Viuvo</option>
-				</select>
-			</p>
+				</select></div></div>
+			
 		</div>
+		
 
 		<div id="Escolaridade">
 			<h2> Escolaridade</h2>
-			<p>Institução<select name="instituicao">
+			<div class='row'><div class='col-md-2 col-md-offset-2 left'><label>Institução</label></div><div class='col-md-6 left'><select name="instituicao">
 					<?php
 					$instituicoes = (new Dao())->get('instituicao');
 					foreach ($instituicoes as $instituicao) {
 						echo "<option value='{$instituicao->instituicao_id}'>{$instituicao->nome}</option>";
 					}
 					?>
-				</select>
-			</p>
-			<p>Curso<select name="curso">
+				</select></div>
+			</div>
+			
+			<div class='row'><div class='col-md-2 col-md-offset-2 left'><label>Curso</label></div><div class='col-md-6 left'><select name="curso">
 					<?php
 					$cursos = (new Dao())->get('curso');
 					foreach ($cursos as $curso) {
 						echo "<option value='{$curso->curso_id}'>{$curso->nome}</option>";
 					}
 					?>
-				</select></p>
-			<p>RA<input type="text" name="RA"></p>
-			<p>Semestre<input type="text" name="semestre"></p>
-			<p>Periodo<select name="periodo">
+				</select></div></div>
+			<div class='row'><div class='col-md-2 col-md-offset-2 left'><label>RA</label></div><div class='col-md-6 left'><input type="text" name="RA"></div></div>
+			<div class='row'><div class='col-md-2 col-md-offset-2 left'><label>Semestre</label></div><div class='col-md-6 left'><input type="text" name="semestre"></div></div>
+			<div class='row'><div class='col-md-2 col-md-offset-2 left'><label>Periodo</label></div><div class='col-md-6 left'><select name="periodo">
 					<option value='Manha'>Manhã</option>
 					<option value='Tarde'>Tarde</option>
 					<option value='Noite'>Noite</option>
-				</select></p>
+				</select></div></div>
 		</div>
 
 		<div id="endereco">
 			<h2>Endereço</h2>
-			<p>Cidade<input type="text" name="endereco[cidade]"></p>
-			<p>Estado
-				<select name="endereco[estado]">
+			<div class='row'><div class='col-md-2 col-md-offset-2 left'><label>Cidade</label></div><div class='col-md-6 left'><input type="text" name="endereco[cidade]"></div></div>
+			<div class='row'><div class='col-md-2 col-md-offset-2 left'><label>Estado
+				</label></div><div class='col-md-6 left'><select name="endereco[estado]">
 					<option value='AC'>AC</option>
 					<option value='AL'> AL</option>
 					<option value='AP'> AP</option>
@@ -101,23 +103,22 @@ require_once "../php/dao/Dao.php";
 					<option value='SP'> SP</option>
 					<option value='SE'> SE</option>
 					<option value='TO'> TO</option>
-				</select>
-			</p>
-			<p>CEP<input type="text" name="endereco[cep]"></p>
-			<p>Bairro<input type="text" name="endereco[bairro]"></p>
-			<p>Rua<input type="text" name="endereco[rua]"></p>
-			<p>Número<input type="text" name="endereco[numero]"></p>
-			<p>Complemento<input type="text" name="endereco[complemento]"></p>
+				</select></div></div>
+			
+			<div class='row'><div class='col-md-2 col-md-offset-2 left'><label>CEP</label></div><div class='col-md-6 left'><input type="text" name="endereco[cep]"></div></div>
+			<div class='row'><div class='col-md-2 col-md-offset-2 left'><label>Bairro</label></div><div class='col-md-6 left'><input type="text" name="endereco[bairro]"></div></div>
+			<div class='row'><div class='col-md-2 col-md-offset-2 left'><label>Rua</label></div><div class='col-md-6 left'><input type="text" name="endereco[rua]"></div></div>
+			<div class='row'><div class='col-md-2 col-md-offset-2 left'><label>Número</label></div><div class='col-md-6 left'><input type="text" name="endereco[numero]"></div></div>
+			<div class='row'><div class='col-md-2 col-md-offset-2 left'><label>Complemento</label></div><div class='col-md-6 left'><input type="text" name="endereco[complemento]"></div></div>
 		</div>
 
 		<div id="contato">
 			<h2>Contato</h2>
-			<p>E-mail<input type="E-mail" name="contato[email]"></p>
-			<p>Celular<input type="text" name="contato[celular]"></p>
-			<p>Telefone<input type="text" name="contato[telefone]"></p>
+			<div class='row'><div class='col-md-2 col-md-offset-2 left'><label>E-mail</label></div><div class='col-md-6 left'><input type="E-mail" name="contato[email]"></div></div>
+			<div class='row'><div class='col-md-2 col-md-offset-2 left'><label>Celular</label></div><div class='col-md-6 left'><input type="text" name="contato[celular]"></div></div>
+			<div class='row'><div class='col-md-2 col-md-offset-2 left'><label>Telefone</label></div><div class='col-md-6 left'><input type="text" name="contato[telefone]"></div></div>
 		</div>
-
-		<input type="submit" name="cadastrar" value="Cadastrar">
+		<div class='col-md-6 left'></label></div><div class='col-md-6 left'><input type="submit" class='btn btn-primary' name="cadastrar" value="Cadastrar"></div></div>
 		</div>
 	</form>
 	<footer>
