@@ -18,7 +18,7 @@ $model = Session::get('model');*/
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Área do Empresa</title>
-	
+
 	<link rel="stylesheet" href="/css/styles.css">
 	<link rel='stylesheet' href='/css/bootstrap.min.css'>
 
@@ -39,7 +39,7 @@ $model = Session::get('model');*/
 			<div class='content'>
 				<div class='btn btn-primary new-question'><span>Nova Questão</span></div>
 				<br><br>
-				<form name='prova' method='POST' action="/empresa/prova/<?php echo $args[1];?>">
+				<form name='prova' method='POST' action="/empresa/prova/<?php echo $args[1]; ?>">
 					<div class='perguntas'>
 					</div>
 					<button type='submit' class='btn btn-primary'>Salvar</button>

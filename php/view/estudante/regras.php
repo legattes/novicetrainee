@@ -25,7 +25,7 @@ $model = Session::get('model');*/
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Área do Estudante</title>
-	<link href="/css/bootstrap.min.css" rel="stylesheet">	
+	<link href="/css/bootstrap.min.css" rel="stylesheet">
 	<link href="/css/styles.css" rel="stylesheet">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<script src="/js/bootstrap.min.js"></script>
@@ -49,7 +49,9 @@ $model = Session::get('model');*/
 				<br><br>
 
 
-				<a href='/estudante/prova/<?php echo $args[1];?>'><div class='btn btn-primary'>Prova</div></a>
+				<a href='/estudante/prova/<?php echo $args[1]; ?>'>
+					<div class='btn btn-primary'>Prova</div>
+				</a>
 			</div>
 		</div>
 	</div>
