@@ -1,7 +1,6 @@
 <?php
 require_once "../php/controller/Estudante.php";
 require_once "../php/controller/Prova.php";
-require_once "../php/controller/Vaga.php";
 require_once "../php/Session.php";
 require_once "../php/dao/Dao.php";
 
@@ -46,7 +45,7 @@ $perguntas = (new Prova())->perguntas($prova[0]->prova_id);
 			</div>
 			<div class='content'>
 				<div class='prova'>
-					<form name='prova' method='POST' action=''>
+					<form name='prova' method='POST' action='/estudante/prova/<?php echo $prova[0]->prova_id; ?>'>
 						<?php foreach($perguntas as $pergunta){
 							echo "<div class='pergunta'>";
 							echo "<p>{$pergunta->texto}</p>";

@@ -22,3 +22,4 @@ class Vaga extends Dao
         return parent::_exec($query);
     }
 }
+?>

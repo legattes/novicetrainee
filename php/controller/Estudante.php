@@ -103,10 +103,10 @@ class Estudante extends Dao
 
         $id = $args[1] ?? Session::get('model')->estudante_id;
 
-        if($id != '' && is_numeric($id)){
+        if ($id != '' && is_numeric($id)) {
             $curriculo = new Curriculo();
             $curriculo->generate($id);
-        }        
+        }
     }
 
     public function vagaGET($args)
@@ -122,29 +122,31 @@ class Estudante extends Dao
         }
     }
 
-    public function regrasGET($args){
+    public function regrasGET($args)
+    {
         include('../php/view/estudante/regras.php');
     }
 
-    public function provaGET($args){
+    public function provaGET($args)
+    {
         include('../php/view/estudante/prova.php');
     }
 
-    public function provaPOST($args){
+    public function provaPOST($args)
+    {
         $prova_id = $args[1];
-        $perguntas = $_POST['pergunta'];
-        $respostas = $_POST['resposta'];        
-        
-        foreach($perguntas as $index => $pergunta){
+        $respostas = $_POST['resposta'];
+
+        foreach ($respostas as $index => $pergunta) {
             (new Dao())->save('prova_estudante', [
                 'prova_id' => $prova_id,
                 'estudante_id' => Session::get('model')->estudante_id,
                 'pergunta_id' => $index,
                 'resposta_id' => $respostas[$index]
-                ]);
-            }
-
-        Prova::validateToken($prova_id);
+            ]);
+        }
+        header("Location: /estudante");
+        //Prova::validateToken($prova_id);
     }
 
     public function login($cpf, $pass)
