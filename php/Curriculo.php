@@ -7,8 +7,12 @@ use Dompdf\Dompdf;
 
 class Curriculo
 {
-    public function generate($id)
+    public function generate($id = null)
     {
+        if($id == null) {
+            $id = Session::get('model')->estudante_id;
+        }
+
         $pdf = new DOMPDF();
 
         ob_get_contents();
@@ -55,7 +59,7 @@ class Curriculo
 
             <h1>{$info->nome}</h1>
             <p>{$info->email}</p>
-            <p>{$info->telefone}</p>
+            <p>". self::mask('(##) ####-####', $info->telefone) ." | " . self::mask('(##) #####-####', $info->celular) . "</p>
             <p>{$data_nasc}</p>
             <p>{$info->cidade} - {$info->estado}</p>
             <hr>
@@ -74,5 +78,15 @@ class Curriculo
             ";
 
         return $html;
+    }
+
+    public static function mask($mask,$str){
+        $str = str_replace(" ","",$str);
+    
+        for($i=0;$i<strlen($str);$i++){
+            $mask[strpos($mask,"#")] = $str[$i];
+        }
+    
+        return $mask;    
     }
 }

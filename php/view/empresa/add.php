@@ -19,7 +19,7 @@
 	<?php include('../php/view/componentes/menu.php'); ?>
 	<div class='container-fluid'>
 		<h1>Cadastro da Empresa</h1>
-		<form id="formulario" method="POST" action="../../php/empresa/add.php">
+		<form id="formulario" method="POST" action="/empresa/add">
 			<div id="informacoesGerais">
 				<h2>Informações Gerais</h2>
 				<div class='row'>

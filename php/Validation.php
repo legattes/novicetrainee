@@ -54,7 +54,7 @@ class Validation
         return true;
     }
 
-    protected function cnpj($cnpj){
+    /*protected function cnpj($cnpj){
         $cnpj = preg_replace('/[^0-9]/', '', $cnpj);        
 
         if (strlen($cnpj) != 14){
@@ -81,7 +81,7 @@ class Validation
         $resto = $soma % 11;
 
         return ($cnpj{13} == ($resto < 2 ? 0 : 11 - $resto));
-    }
+    }*/
 
     protected function escape($post){
         $newPost = [];

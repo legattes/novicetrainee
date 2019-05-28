@@ -5,7 +5,6 @@ require_once "../php/dao/Dao.php";
 
 $cursos = (new Dao())->get('curso');
 
-
 Session::handle('empresa');
 
 $model = Session::get('model');
@@ -37,7 +36,6 @@ $info = (new Empresa())->info($model->empresa_id)[0];
 				</a>
 			</div>
 			<div>
-
 				<!-- Nav tabs -->
 				<ul class="nav nav-tabs" role="tablist">
 					<li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="pill">Home</a></li>
@@ -165,8 +163,7 @@ $info = (new Empresa())->info($model->empresa_id)[0];
 								</div>
 							</div>
 							</label>
-					</div>
-					<div class='col-md-6 left'><input class="btn btn-primary btn-lg" type="submit" value="Salvar" />
+							<div class='col-md-6 left'><input class="btn btn-primary btn-lg" type="submit" value="Salvar" /></div>
 						</form>
 					</div>
 
@@ -174,83 +171,47 @@ $info = (new Empresa())->info($model->empresa_id)[0];
 
 					<div role="tabpanel" class="tab-pane" id="CadastrarVag">
 						<form id="formulario" method="POST" action="empresa/vaga">
-							<table class="table">
-								<tr>
-									<td colspan="3">
-										<h2>Informações</h2>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										<div class='row'>
-											<div class='col-md-2 left'><label>Nome
-									</td>
-									<td></label>
+							<h2>Informações da Vaga</h2>
+							<div class='row'>
+								<div class='col-md-2 left'><label>Nome</label></div>
+								<div class='col-md-6 left'><input type="text" name="vaga[nome]"></div>
+							</div>
+							<div class='row'>
+								<div class='col-md-2 left'><label>Período</label></div>
+								<div class='col-md-6 left'>
+									<select name="vaga[periodo]">
+										<option value='Manha'>Manhã</option>
+										<option value='Tarde'>Tarde</option>
+										<option value='Noite'>Noite</option>
+									</select>
+								</div>
+							</div>
+							<div class='row'>
+								<div class='col-md-2 left'><label>Remuneração</label></div>
+								<div class='col-md-6 left'><input type="text" name="vaga[remuneracao]"></div>
+							</div>
+							<div class='row'>
+								<div class='col-md-2 left'><label>Curso</label></div>
+								<div class='col-md-6 left'>
+									<select name="vaga[curso]">
+										<?php foreach ($cursos as $curso) {
+											echo "<option value='{$curso->curso_id}'>{$curso->nome}</option>";
+										} ?>
+									</select>
+								</div>
+							</div>
+							<div class='row'>
+								<div class='col-md-2 left'><label>Semestre</label></div>
+								<div class='col-md-6 left'><input type="text" name="vaga[semestre]"></div>
+							</div>
+							<div class='row'>
+								<div class='col-md-6 left'><input class="btn btn-primary " type="submit" value="Salvar" /></div>
+							</div>
+						</form>
 					</div>
-					<div class='col-md-6 left'><input type="text" name="vaga[nome]"></div>
 				</div>
-				</td>
-				</tr>
-				<tr>
-					<td>
-						<div class='row'>
-							<div class='col-md-2 left'><label>Período
-					</td>
-					<td>
-						<select name="vaga[periodo]">
-							<option value='Manha'>Manhã</option>
-							<option value='Tarde'>Tarde</option>
-							<option value='Noite'>Noite</option>
-						</select>
 			</div>
 		</div>
-		</td>
-		</tr>
-		<tr>
-			<td>
-				<div class='row'>
-					<div class='col-md-2 left'><label>Remuneração
-			</td>
-			<td></label>
-	</div>
-	<div class='col-md-6 left'><input type="text" name="vaga[remuneracao]"></div>
-	</div>
-	</td>
-	</tr>
-	<tr>
-		<td>
-			<div class='row'>
-				<div class='col-md-2 left'><label>Curso
-		</td>
-		<td><select name="vaga[curso]">
-				<?php foreach ($cursos as $curso) {
-					echo "<option value='{$curso->curso_id}'>{$curso->nome}</option>";
-				} ?>
-			</select></div>
-			</div>
-		</td>
-	</tr>
-	<tr>
-		<td>
-			<div class='row'>
-				<div class='col-md-2 left'><label>Semestre
-		</td>
-		<td></label></div>
-			<div class='col-md-6 left'><input type="text" name="vaga[semestre]"></div>
-			</div>
-		</td>
-	</tr>
-	<tr>
-		<td></label></div>
-			<div class='col-md-6 left'><input class="btn btn-primary " type="submit" value="Salvar" />
-		</td>s
-	</tr>
-	</form>
-	</div>
-	</div>s
-	</div>
-	</div>
-	</div>
 	</div>
 </body>
 

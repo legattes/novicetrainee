@@ -1,9 +1,7 @@
 <?php
 require_once "../php/controller/Estudante.php";
 require_once "../php/controller/Prova.php";
-//require_once "../php/controller/Vaga.php";
 require_once "../php/Session.php";
-require_once "../php/dao/Dao.php";
 
 Session::handle('estudante');
 /*
@@ -14,7 +12,6 @@ $model = Session::get('model');*/
 	die();
 }*/
 
-//$info = (new Empresa())->info($model->empresa_id)[0];
 ?>
 
 <!DOCTYPE html>
@@ -36,6 +33,9 @@ $model = Session::get('model');*/
 		<div class="container-fuid">
 			<div class="page-header">
 				<h1>Área da Estudante</h1>
+				<a href='/estudante'>
+					<div class='btn btn-primary'><span>Voltar</span></div>
+				</a>
 				<a href='/estudante/login'>
 					<div class='btn btn-primary'><span>Sair</span></div>
 				</a>
@@ -47,8 +47,7 @@ $model = Session::get('model');*/
 				<h4>Você tem 01 tentativa.</h4>
 				<h4>Todas as perguntas devem ser respondidas.</h4>
 				<br><br>
-
-
+				
 				<a href='/estudante/prova/<?php echo $args[1]; ?>'>
 					<div class='btn btn-primary'>Prova</div>
 				</a>

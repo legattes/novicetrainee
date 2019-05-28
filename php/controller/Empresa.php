@@ -20,7 +20,7 @@ class Empresa extends Dao
             Session::loggout();
         }
 
-        $login = $this->login($cnpj, $senha);
+        $login = $this->login($cnpj, md5($senha));
 
         if (empty($login)) {
             Session::loggout();
@@ -51,7 +51,7 @@ class Empresa extends Dao
 
     public function addPOST()
     {
-        if ((new Validation())->post($_POST, [
+        /*if ((new Validation())->post($_POST, [
             'cnpj',
             'nome_fantasia',
             'razao_social',
@@ -68,7 +68,9 @@ class Empresa extends Dao
         ]) != true) {
             header('Location: /empresa/add');
             die();
-        }
+        }*/
+
+        $_POST['empresa']['senha'] = md5( $_POST['empresa']['senha']);
 
         $empresa_id = $this->save('empresa', $_POST['empresa'], true)[0];
 
@@ -154,8 +156,14 @@ class Empresa extends Dao
             (new Dao())->save('prova_pergunta', [
                 'prova_id' => $prova_id,
                 'pergunta_id' => $pergunta_id
-            ]);
+            ]);            
         }
+
+        header('Location: /empresa');
+    }
+
+    public function provafeitaGET($args){
+        include("../php/view/empresa/provafeita.php");
     }
 
     public function vagas($id)
@@ -164,6 +172,14 @@ class Empresa extends Dao
         LEFT JOIN curso C
         ON V.curso_id = C.curso_id
         WHERE empresa_id = '{$id}'";
+
+        return parent::_exec($query);
+    }
+
+    public function vaga($id, $vagaId)
+    {
+        $query = "SELECT * FROM vaga     
+        WHERE empresa_id = '{$id}' and vaga_id = '{$vagaId}'";
 
         return parent::_exec($query);
     }

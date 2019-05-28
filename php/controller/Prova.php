@@ -42,6 +42,15 @@ class Prova extends Dao
         return parent::_exec($query);
     }
 
+    public function perguntaResposta($pergunta_id){
+        $query = "SELECT PR.pergunta_id, PR.resposta_id, PR.correta, R.texto FROM resposta R
+        LEFT JOIN  pergunta_resposta PR
+        ON R.resposta_id = PR.resposta_id
+        WHERE PR.pergunta_id = '{$pergunta_id}'";
+
+        return parent::_exec($query);
+    }
+
     public static function generateToken($prova_id)
     {
         $model = Session::get('model');

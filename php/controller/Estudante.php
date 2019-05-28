@@ -18,6 +18,8 @@ class Estudante extends Dao
 
     public function addPOST()
     {
+        $_POST['estudante']['senha'] = md5( $_POST['estudante']['senha']);
+
         $estudante_id = $this->save('estudante', $_POST['estudante'], true)[0];
 
         $estudante_instituicao['estudante_id'] = $estudante_id->estudante_id;
@@ -82,7 +84,7 @@ class Estudante extends Dao
             Session::loggout();
         }
 
-        $login = $this->login($cpf, $senha);
+        $login = $this->login($cpf, md5($senha));
 
         if (empty($login)) {
             Session::loggout();
@@ -239,6 +241,20 @@ class Estudante extends Dao
         LEFT JOIN empresa EM
         on V.empresa_id = EM.empresa_id
         WHERE EV.estudante_id = '{$id}'";
+
+        return self::_exec($query);
+    }
+
+    public function provafeita($id, $provaId){
+        $query = "SELECT * FROM prova_token
+        WHERE prova_id = '{$provaId}' and estudante_id = '{$id}' and validade = '0'";
+
+        return self::_exec($query);
+    }
+
+    public function respostasProva($id, $provaId){
+        $query = "SELECT * FROM prova_estudante
+        WHERE prova_id = '{$provaId}' and estudante_id = '{$id}'";
 
         return self::_exec($query);
     }

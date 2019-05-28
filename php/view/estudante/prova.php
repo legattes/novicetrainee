@@ -2,7 +2,6 @@
 require_once "../php/controller/Estudante.php";
 require_once "../php/controller/Prova.php";
 require_once "../php/Session.php";
-require_once "../php/dao/Dao.php";
 
 Session::handle('estudante');
 /*

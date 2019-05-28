@@ -5,10 +5,15 @@ class Connection
 {
 	public function connect()
 	{
-		$host = "sql175.main-hosting.eu";
+		/*$host = "sql175.main-hosting.eu";
 		$usuario = "u112785488_novic";
 		$senha = "3Uj7zy98@";
-		$banco = "u112785488_novic";
+		$banco = "u112785488_novic";*/
+
+		$host = "localhost";
+		$usuario = "public";
+		$senha = "3uj7zy98@";
+		$banco = "novice";
 
 		$con = mysqli_connect($host, $usuario, $senha, $banco);
 

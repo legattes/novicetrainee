@@ -93,3 +93,18 @@ footer{
 .left{
 	text-align: left;
 }
+
+
+.correct{
+	background-color: green;
+	color: white;
+	padding: 0.5em;
+	margin: 1em;
+}
+
+.wrong{
+	background-color: red;
+	color: white;
+	padding: 0.5em;
+	margin: 1em;
+}

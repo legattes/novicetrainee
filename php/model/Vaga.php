@@ -16,7 +16,7 @@ class Vaga extends Dao
     }
 
     public function prova($id){
-        $query = "SELECT* FROM prova
+        $query = "SELECT * FROM prova
         where vaga_id = '{$id}'";
 
         return parent::_exec($query);
