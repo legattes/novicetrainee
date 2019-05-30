@@ -57,7 +57,7 @@ class Prova extends Dao
 
         $token = md5($prova_id . $model->estudante_id . $model->cpf);
 
-        $this->save('prova_token', [
+        (new Dao())->save('prova_token', [
             'prova_id' => $prova_id,
             'estudante_id' => $model->estudante_id,
             'token' => $token,
@@ -73,14 +73,14 @@ class Prova extends Dao
 
         $query = "SELECT * FROM prova_token WHERE prova_id = '{$prova_id}' and estudante_id = '{$model->estudante_id}'";
 
-        $prova_token = parent::_exec($query);
+        $prova_token = (new Dao())->_exec($query);
 
         if(empty($prova_token)){
             return false;
         }
 
         if ($validateToken == $prova_token[0]->token && $prova_token[0]->validade == '1') {
-            $this->save(
+            (new Dao())->save(
                 'prova_token',
                 [
                     'prova_id' => $prova_id,

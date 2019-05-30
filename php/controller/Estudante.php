@@ -3,6 +3,7 @@ require_once "../php/dao/Dao.php";
 require_once "../php/Session.php";
 require_once "../php/Curriculo.php";
 require_once "../php/controller/Prova.php";
+require_once "../php/model/Vaga.php";
 
 class Estudante extends Dao
 {
@@ -117,6 +118,9 @@ class Estudante extends Dao
         $vaga['vaga_id'] = $args[1];
 
         if ($this->save('estudante_vaga', $vaga) == true) {
+            $prova = (new Vaga())->prova($args[1])[0];
+            (new Prova())->generateToken($prova->prova_id);
+
             //generate TOKEN
             header('Location: /estudante');
         } else {

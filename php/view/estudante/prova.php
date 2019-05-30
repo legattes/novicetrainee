@@ -4,17 +4,15 @@ require_once "../php/controller/Prova.php";
 require_once "../php/Session.php";
 
 Session::handle('estudante');
-/*
-$model = Session::get('model');*/
+
+$model = Session::get('model');
 $prova = (new Vaga())->prova($args[1]);
 $perguntas = (new Prova())->perguntas($prova[0]->prova_id);
 
-/*if((new Prova())->validateToken($args[1]) == false){
+if((new Prova())->validateToken($args[1]) == false){
 	echo 'não será possivel realizar a prova';
 	die();
-}*/
-
-//$info = (new Empresa())->info($model->empresa_id)[0];
+}
 ?>
 
 <!DOCTYPE html>
