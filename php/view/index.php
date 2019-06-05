@@ -66,7 +66,7 @@ require_once "..\php\controller\Estudante.php";
 		</form>
 	</div>
 	<footer>
-		<span>Desenvolvido por: Grupo - Faculdade Olavo Bilac</span>
+		<span>Desenvolvido por: legates</span>
 	</footer>
 </body>
 

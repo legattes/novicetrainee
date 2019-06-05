@@ -60,7 +60,7 @@
 		</section>
 	</div>
 	<footer>
-		<h6>Desenvolvido por: Grupo - Faculdade Olavo Bilac</h6>
+		<h6>Desenvolvido por: legates</h6>
 	</footer>
 </body>
 
